@@ -1,12 +1,12 @@
 {
-  "version": 2,
-  "approvedAt": "2026-09-23",
-  "sourceCommit": "fa487eb11684268f2a635b4d28d487d1a1941551",
-  "referenceDeployment": "dpl_Fs5ywRjjeH36qQpYgasPW3Ra6cP8",
+  "version": 1,
+  "approvedAt": "2026-08-26",
+  "sourceCommit": "97c4e0a336db209bff51a1296617af14a49788da",
+  "referenceDeployment": "dpl_CRSeYnh13Kdijyg2L45pgBA5pdm1",
   "hashAlgorithm": "sha256",
   "hashes": {
     "meetDukeStyle": "e0d62a0f769b55681b5ae975f6b9d0951946c97fb3567fa8a0333124073dbf8b",
-    "meetDukeSection": "c9dc0158112d2cfca0c02aa95ed1fba2425c67ed4a472b5c0f8dba53f8e5d627",
+"meetDukeSection": "f163bd9a7ed50547ae29872e2f53d5ee72c94d0fdbd8a9029e6233001623e762",
     "scriptJs": "ddad9bc06ca64251029722d9fb236c227fa36c9329b43288c9f04d8e39eee84c"
   },
   "expected": {
