@@ -15,6 +15,11 @@ on:
           - during_ci
           - after_merge
           - before_reconcile
+      oidc_probe_only:
+        description: Verify GitHub OIDC against the n8n broker and stop before SEO work
+        required: false
+        default: false
+        type: boolean
   push:
     branches: [main]
     paths:
@@ -65,6 +70,16 @@ jobs:
             -H "Content-Type: application/json" \
             --data '{"action":"lease"}' > /tmp/seo-lease.json
           cat /tmp/seo-lease.json
+          if [ "${{ inputs.oidc_probe_only }}" = "true" ]; then
+            python - <<'PY'
+import json
+d=json.load(open('/tmp/seo-lease.json'))
+if d.get('ok') is not True:
+    raise SystemExit('OIDC broker probe did not authenticate successfully')
+print('OIDC_BROKER_PROBE_PASS')
+PY
+            exit 0
+          fi
           python - <<'PY'
           import json, os
           d=json.load(open('/tmp/seo-lease.json'))
