@@ -15,6 +15,11 @@ on:
           - during_ci
           - after_merge
           - before_reconcile
+      oidc_probe_only:
+        description: Verify GitHub OIDC against the n8n broker and stop before SEO work
+        required: false
+        default: false
+        type: boolean
   push:
     branches: [main]
     paths:
@@ -35,8 +40,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
-      REPO: vanichbeo/ready-maid-scroll-world
-      BROKER_URL: https://mgefvmzxfjqgtnpfgqgm.supabase.co/functions/v1/seo-github-worker-broker
+      REPO: salimbenzidane/ready-maid-scroll-world
+      BROKER_URL: https://automation.readymaid.my/webhook/readymaid/seo/broker
       OIDC_AUD: readymaid-seo-worker
       GH_TOKEN: ${{ github.token }}
       FAULT_STAGE: ${{ github.event_name == 'workflow_dispatch' && inputs.fault_stage || 'none' }}
@@ -65,6 +70,16 @@ jobs:
             -H "Content-Type: application/json" \
             --data '{"action":"lease"}' > /tmp/seo-lease.json
           cat /tmp/seo-lease.json
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.oidc_probe_only }}" = "true" ]; then
+            python - <<'PY'
+import json
+d=json.load(open('/tmp/seo-lease.json'))
+if d.get('ok') is not True:
+    raise SystemExit('OIDC broker probe did not authenticate successfully')
+print('OIDC_BROKER_PROBE_PASS')
+PY
+            exit 0
+          fi
           python - <<'PY'
           import json, os
           d=json.load(open('/tmp/seo-lease.json'))
@@ -247,39 +262,10 @@ jobs:
           PR_NUMBER=$(gh pr list --repo "$REPO" --head "$BRANCH" --state all --limit 1 --json number --jq '.[0].number // empty')
           if [ -z "$PR_NUMBER" ]; then
             ACTION=$(python -c 'import json; print(json.load(open("/tmp/seo-worker-result.json")).get("action","SEO"))')
-            python - <<PY >/tmp/create-pr.json
-          import json
-          print(json.dumps({
-            "action":"create_pr",
-            "run_id":"${{ steps.lease.outputs.run_id }}",
-            "branch_name":"$BRANCH",
-            "title":"SEO auto: deterministic $ACTION",
-            "body":"Server-side Auto SEO deterministic $ACTION with exact-stage recovery. RELINK/UPDATE may change one bounded file; guide CREATE may change exactly the generated guide, guides/index.html and sitemap.xml. All production safety and reconciliation gates remain mandatory."
-          }))
-          PY
-            HTTP_CODE=$(curl -sS -o /tmp/create-pr-response.json -w '%{http_code}' -X POST "$BROKER_URL" \
-              -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" --data-binary @/tmp/create-pr.json)
-            if [ "$HTTP_CODE" -lt 200 ] || [ "$HTTP_CODE" -ge 300 ]; then
-              python - <<'PY' >/tmp/failure.json
-          import json
-          from pathlib import Path
-          raw=Path('/tmp/create-pr-response.json').read_text(errors='replace').strip()
-          try:
-              d=json.loads(raw)
-              err=str(d.get("external_error") or d.get("error") or raw)
-          except Exception:
-              err=raw
-          print(json.dumps({
-            "class":"TRANSIENT",
-            "stage":"pr_created",
-            "message":"Broker-authenticated GitHub PR creation failed",
-            "external_error":err[-4000:]
-          }))
-          PY
-              cat /tmp/create-pr-response.json >&2 || true
-              exit 1
-            fi
-            PR_NUMBER=$(python -c 'import json; print(json.load(open("/tmp/create-pr-response.json"))["pr_number"])')
+            PR_URL=$(gh pr create --repo "$REPO" --head "$BRANCH" --base main \
+              --title "SEO auto: deterministic $ACTION" \
+              --body "Server-side Auto SEO deterministic $ACTION with exact-stage recovery. CREATE changes only the generated guide and sitemap.xml. All production safety and reconciliation gates remain mandatory.")
+            PR_NUMBER=$(gh pr view "$PR_URL" --repo "$REPO" --json number --jq .number)
           fi
           python - <<PY >/tmp/pr-stage.json
           import json
