@@ -81,7 +81,7 @@ if (mode === 'self-test') {
     ['style mutation', { ...files, index: files.index.replace('margin-top:16px', 'margin-top:17px') }],
     ['DOM mutation', { ...files, index: files.index.replace('class="duke-video-card"', 'class="duke-video-card-removed"') }],
     ['script mutation', { ...files, script: files.script.replace('MEET DUKE', 'MEET DUKE REMOVED') }],
-    ['video mutation', { ...files, index: files.index.replace('experience-vs-no-experience.mp4', 'missing-video.mp4') }]
+    ['video mutation', { ...files, index: files.index.replace('clear-instructions.mp4', 'missing-video.mp4') }]
   ];
   const missed = cases.filter(([, mutated]) => validateMeetDuke(mutated).length === 0).map(([name]) => name);
   if (missed.length) {

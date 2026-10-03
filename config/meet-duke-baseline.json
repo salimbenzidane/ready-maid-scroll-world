@@ -1,24 +1,25 @@
 {
-  "version": 1,
-  "approvedAt": "2026-08-26",
-  "sourceCommit": "97c4e0a336db209bff51a1296617af14a49788da",
-  "referenceDeployment": "dpl_CRSeYnh13Kdijyg2L45pgBA5pdm1",
+  "version": 2,
+  "approvedAt": "2026-10-03",
+  "sourceCommit": "714ad1334e22d192a3a9c0ba0f63f23af55b9478",
+  "referenceDeployment": null,
   "hashAlgorithm": "sha256",
   "hashes": {
-    "meetDukeStyle": "e0d62a0f769b55681b5ae975f6b9d0951946c97fb3567fa8a0333124073dbf8b",
-"meetDukeSection": "f163bd9a7ed50547ae29872e2f53d5ee72c94d0fdbd8a9029e6233001623e762",
+    "meetDukeStyle": "2349588f6b17e291a935a6e154d6654a6e84eb1d882bc5cdebd7be538a949bdd",
+    "meetDukeSection": "9c48f1696bdd35fc3cf35160a49c3ecbd511672dd0a7b95f4b3d759ea663dde0",
     "scriptJs": "ddad9bc06ca64251029722d9fb236c227fa36c9329b43288c9f04d8e39eee84c"
   },
   "expected": {
-    "videoCards": 6,
-    "videoSources": 6,
+    "videoCards": 7,
+    "videoSources": 7,
     "videoFiles": [
-      "experience-vs-no-experience.mp4",
-      "repeated-instructions.mp4",
-      "housework-interview-question.mp4",
-      "quiet-helper-warning.mp4",
-      "interview-performance.mp4",
-      "first-interview-question.mp4"
+      "clear-instructions.mp4",
+      "interview-process.mp4",
+      "right-match.mp4",
+      "realistic-expectations.mp4",
+      "consistent-instructions.mp4",
+      "match-real-needs.mp4",
+      "licensed-agency.mp4"
     ]
   }
 }
