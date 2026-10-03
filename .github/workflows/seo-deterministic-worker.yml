@@ -70,7 +70,38 @@ jobs:
             -H "Content-Type: application/json" \
             --data '{"action":"lease"}' > /tmp/seo-lease.json
           cat /tmp/seo-lease.json
-          if [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.oidc_probe_only }}" = "true" ]; then
+          if [ "${{ github.event_name }}" = "push" ]; then
+            PROOF_RUN_ID="6f50db2d-ec4c-457a-bba8-e4ad51dc5af4"
+            curl -fsS -X POST "$BROKER_URL" -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+              --data "{\"action\":\"stage_state\",\"run_id\":\"$PROOF_RUN_ID\"}" > /tmp/seo-stage-state-proof.json
+            python - <<'PY'
+          import json
+          d=json.load(open('/tmp/seo-stage-state-proof.json'))
+          assert d.get('ok') is True, d
+          assert d.get('resume_from') == 'change_prepared', d
+          print('SELFHOST_STAGE_STATE_PASS')
+          PY
+            curl -fsS -X POST "$BROKER_URL" -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+              --data "{\"action\":\"checkpoint\",\"run_id\":\"$PROOF_RUN_ID\",\"stage\":\"change_prepared\",\"status\":\"completed\",\"evidence\":{\"proof_only\":true}}" > /tmp/seo-checkpoint-proof.json
+            python - <<'PY'
+          import json
+          d=json.load(open('/tmp/seo-checkpoint-proof.json'))
+          assert d.get('ok') is True, d
+          assert d.get('stage',{}).get('status') == 'completed', d
+          print('SELFHOST_CHECKPOINT_PASS')
+          PY
+            curl -fsS -X POST "$BROKER_URL" -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+              --data "{\"action\":\"finalize\",\"run_id\":\"$PROOF_RUN_ID\",\"result\":\"blocked\",\"error_message\":\"controlled self-host RPC proof\",\"evidence\":{\"proof_only\":true}}" > /tmp/seo-finalize-proof.json
+            python - <<'PY'
+          import json
+          d=json.load(open('/tmp/seo-finalize-proof.json'))
+          assert d.get('ok') is True, d
+          assert d.get('terminal') is True and d.get('status') == 'blocked', d
+          print('SELFHOST_FINALIZE_PASS')
+          PY
+            exit 0
+          fi
+          if [ "${{ inputs.oidc_probe_only }}" = "true" ]; then
             python - <<'PY'
           import json
           d=json.load(open('/tmp/seo-lease.json'))
