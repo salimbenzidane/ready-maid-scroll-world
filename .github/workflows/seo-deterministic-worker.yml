@@ -70,7 +70,7 @@ jobs:
             -H "Content-Type: application/json" \
             --data '{"action":"lease"}' > /tmp/seo-lease.json
           cat /tmp/seo-lease.json
-          if [ "${{ inputs.oidc_probe_only }}" = "true" ]; then
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.oidc_probe_only }}" = "true" ]; then
             python - <<'PY'
 import json
 d=json.load(open('/tmp/seo-lease.json'))
