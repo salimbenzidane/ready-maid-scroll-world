@@ -610,6 +610,13 @@ jobs:
           print(json.dumps(payload))
           PY
           curl -fsS -X POST "$BROKER_URL"             -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json"             --data-binary @/tmp/finalize.json | tee /tmp/finalize-response.json
+          python - <<'PY'
+          import json, sys
+          r=json.load(open("/tmp/finalize-response.json"))
+          if r.get("ok") is not True or r.get("status") != "passed":
+              print("SEO finalize rejected:", json.dumps(r, sort_keys=True), file=sys.stderr)
+              sys.exit(1)
+          PY
           touch /tmp/finalized
 
       - name: Fail closed if an active worker run did not reconcile
