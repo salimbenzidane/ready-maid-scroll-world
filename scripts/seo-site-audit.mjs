@@ -6,6 +6,14 @@ const root = process.cwd();
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
 const exists = (file) => fs.existsSync(path.join(root, file));
 
+const vercel = JSON.parse(read('vercel.json'));
+const rewrittenAsset = (file) => (vercel.rewrites || []).some((rewrite) => {
+  const source = String(rewrite.source || '').replace(/^\//, '');
+  const star = source.indexOf('/:path*');
+  if (star < 0) return source === file;
+  return file.startsWith(source.slice(0, star + 1));
+});
+
 const sitemap = read('sitemap.xml');
 const urls = [...sitemap.matchAll(/<loc>https:\/\/readymaid\.my([^<]*)<\/loc>/g)].map((match) => match[1] || '/');
 const uniqueUrls = new Set(urls);
@@ -62,7 +70,7 @@ for (const urlPath of urls) {
 
   for (const match of html.matchAll(/\s(?:src|poster)="([^"]+)"/gi)) {
     const asset = localAssetPath(match[1], file);
-    if (asset && !exists(asset)) errors.push(`${urlPath}: missing local asset ${asset}`);
+    if (asset && !exists(asset) && !rewrittenAsset(asset)) errors.push(`${urlPath}: missing local asset ${asset}`);
   }
 
   for (const match of html.matchAll(/<a[^>]*class="[^"]*related-card[^"]*"[^>]*href="([^"]+)"/gi)) {
