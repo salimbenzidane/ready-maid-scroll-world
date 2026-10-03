@@ -230,7 +230,7 @@ jobs:
             --data '{"action":"checkpoint","run_id":"${{ steps.lease.outputs.run_id }}","stage":"qa_passed","status":"completed","evidence":{"all_local_safety_gates":true}}'
 
       - name: Create or recover isolated branch and pull request
-        if: steps.lease.outputs.active == 'true'
+        if: steps.lease.outputs.active == 'true' && steps.lease.outputs.pr_created_done != 'true'
         id: pr
         shell: bash
         run: |
@@ -280,7 +280,7 @@ jobs:
           fi
 
       - name: Run or recover independent SEO Production Gate
-        if: steps.lease.outputs.active == 'true'
+        if: steps.lease.outputs.active == 'true' && steps.lease.outputs.ci_passed_done != 'true'
         id: gate
         shell: bash
         run: |
@@ -333,7 +333,7 @@ jobs:
           exit 1
 
       - name: Merge once or recover existing merge
-        if: steps.lease.outputs.active == 'true'
+        if: steps.lease.outputs.active == 'true' && steps.lease.outputs.merged_done != 'true'
         id: merge
         shell: bash
         run: |
@@ -366,7 +366,7 @@ jobs:
           fi
 
       - name: Verify deployment and live production without republishing
-        if: steps.lease.outputs.active == 'true'
+        if: steps.lease.outputs.active == 'true' && steps.lease.outputs.live_verified_done != 'true'
         id: live
         shell: bash
         run: |
