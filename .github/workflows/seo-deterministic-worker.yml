@@ -72,12 +72,12 @@ jobs:
           cat /tmp/seo-lease.json
           if [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.oidc_probe_only }}" = "true" ]; then
             python - <<'PY'
-import json
-d=json.load(open('/tmp/seo-lease.json'))
-if d.get('ok') is not True:
-    raise SystemExit('OIDC broker probe did not authenticate successfully')
-print('OIDC_BROKER_PROBE_PASS')
-PY
+          import json
+          d=json.load(open('/tmp/seo-lease.json'))
+          if d.get('ok') is not True:
+              raise SystemExit('OIDC broker probe did not authenticate successfully')
+          print('OIDC_BROKER_PROBE_PASS')
+          PY
             exit 0
           fi
           python - <<'PY'
