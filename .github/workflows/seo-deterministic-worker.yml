@@ -1,8 +1,6 @@
 name: Auto SEO Deterministic Worker
 
 on:
-  schedule:
-    - cron: '*/15 * * * *'
   workflow_dispatch:
     inputs:
       fault_stage:
