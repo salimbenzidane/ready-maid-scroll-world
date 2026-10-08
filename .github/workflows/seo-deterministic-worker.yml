@@ -55,9 +55,8 @@ jobs:
         with:
           node-version: '22'
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      - name: Verify Python 3.12 runtime
+        run: python -c 'import sys; assert sys.version_info[:2] == (3, 12), sys.version'
 
       - name: Lease today's server-side SEO action
         id: lease
