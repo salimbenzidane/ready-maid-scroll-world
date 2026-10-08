@@ -12,7 +12,7 @@ permissions:
 jobs:
   static-quality:
     name: Static quality and protected surface
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, readymaid-ci]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -60,7 +60,7 @@ jobs:
 
   rendered-screenshots:
     name: Desktop and mobile rendered evidence
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, readymaid-ci]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
