@@ -12,16 +12,15 @@ permissions:
 jobs:
   static-quality:
     name: Static quality and protected surface
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, readymaid-ci]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      - name: Verify Python 3.12 runtime
+        run: python -c 'import sys; assert sys.version_info[:2] == (3, 12), sys.version'
       - name: Enforce immutable Auto SEO post boundary
         shell: bash
         run: |
@@ -60,7 +59,7 @@ jobs:
 
   rendered-screenshots:
     name: Desktop and mobile rendered evidence
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, readymaid-ci]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
