@@ -64,31 +64,31 @@ jobs:
           set -euo pipefail
           test -s /etc/ssl/certs/ca-certificates.crt
           cat > "$RUNNER_TEMP/readymaid-seo-broker-ca.crt" <<'READYMAID_SEO_BROKER_CA'
------BEGIN CERTIFICATE-----
-MIIERzCCAq+gAwIBAgIUP5AyNFXPd30+iXYzw8sluTKg1XEwDQYJKoZIhvcNAQEL
-BQAwKzEpMCcGA1UEAwwgUmVhZHltYWlkIFNFTyBCcm9rZXIgSW50ZXJuYWwgQ0Ew
-HhcNMjYxMDA4MTQwNjM1WhcNMzYxMDA1MTQwNjM1WjArMSkwJwYDVQQDDCBSZWFk
-eW1haWQgU0VPIEJyb2tlciBJbnRlcm5hbCBDQTCCAaIwDQYJKoZIhvcNAQEBBQAD
-ggGPADCCAYoCggGBAMx4CHhxstS2S3ZQ3jED1042boebda9vNTPXSgPEbRQCQxMm
-W8gwTv2mOKowQsDZcT/tmeeisHhOZANW4QOdefnBhdPjkig5Hjowt6cgUPIZHq8J
-W90Y0GBMKNounY+q+QRp+I80uXues/kGooqlbFgs4frxIsx8AmoniZy9Z/EyqyzD
-LEGfJoTAJM5E9JO4zYa1yQaZP+iPG+jj3kJYasSRttFbE0023urCZNnUETdS6HZm
-RV2ZDjhC92XZbBxt6xA48RdYQRyjgJIG0/nP7ogGjX/lr7tPB92y5Oxl0OBL/ld8
-z8zkC9XKNYy4T5iGy54fUQYQum+sS5blQVy9O4WUres/CX9Mwv8WlHBbdmJgvoKB
-qxefGO2NL95zi1usdi3+MRj2gEalr4PdK9eSZ0iKZkY7mrw7hpb76nGATfWwLdW4
-VeFTSimyzAO2Lfi1ebkz6AK8ACxGuJzx3Y160RTn/wY7yGk5fQ7I4HcZzQZnu541
-9Swg+7G+4ibYvOUYNQIDAQABo2MwYTAdBgNVHQ4EFgQUhgLIDbJ6A5QmPcz8EzQd
-TUv3FHcwHwYDVR0jBBgwFoAUhgLIDbJ6A5QmPcz8EzQdTUv3FHcwDwYDVR0TAQH/
-BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYwDQYJKoZIhvcNAQELBQADggGBACqp6xAV
-usj0m/EqwY7JGmbvz9vTdPkM/KkLbnCxdyzqrWtGrnXyzgPPv+ozp4jk27H/JhW1
-xlxhFzoVtDdQqJJ/sk2N0JIHjls1qoyh+AfUev0RWEx+yaSO+pAlCOxAQIe5OyQb
-z7aHiaqowY+OPVhzQnDWi0dEb/GTZALGmK5kp+RkVknHZFEficEV5URnLlW+5z2o
-L1zTwrxj/yyYiZCPpAZICMD/cOyjTTjyUXtFYwRBdT9yS1O1mF60GWbDQZxhPmSu
-1Uhu9ViRZer97BnRjNgUdyj6ZFHfc4nLkCMs+ha9ZcDNi23p9Yfi+7n2YhNWTNAz
-OeyLV+vATi6Gx4eKwT0HyCUxOZ+Xbnh966DRyJLnTd0bJmLN9vf45nDbIBs8A6yv
-F8sCMWexGXD+UD+QknFw3s4XPqQl76b0XFlATzMZRjtL1gmBf+DYieJubESNEjNg
-gsv9yqNp3dNLc+lo/bL6dgku41/NZW/Or4bfVwbCL/czdjhTBg8Iptd9VQ==
------END CERTIFICATE-----
+          -----BEGIN CERTIFICATE-----
+          MIIERzCCAq+gAwIBAgIUP5AyNFXPd30+iXYzw8sluTKg1XEwDQYJKoZIhvcNAQEL
+          BQAwKzEpMCcGA1UEAwwgUmVhZHltYWlkIFNFTyBCcm9rZXIgSW50ZXJuYWwgQ0Ew
+          HhcNMjYxMDA4MTQwNjM1WhcNMzYxMDA1MTQwNjM1WjArMSkwJwYDVQQDDCBSZWFk
+          eW1haWQgU0VPIEJyb2tlciBJbnRlcm5hbCBDQTCCAaIwDQYJKoZIhvcNAQEBBQAD
+          ggGPADCCAYoCggGBAMx4CHhxstS2S3ZQ3jED1042boebda9vNTPXSgPEbRQCQxMm
+          W8gwTv2mOKowQsDZcT/tmeeisHhOZANW4QOdefnBhdPjkig5Hjowt6cgUPIZHq8J
+          W90Y0GBMKNounY+q+QRp+I80uXues/kGooqlbFgs4frxIsx8AmoniZy9Z/EyqyzD
+          LEGfJoTAJM5E9JO4zYa1yQaZP+iPG+jj3kJYasSRttFbE0023urCZNnUETdS6HZm
+          RV2ZDjhC92XZbBxt6xA48RdYQRyjgJIG0/nP7ogGjX/lr7tPB92y5Oxl0OBL/ld8
+          z8zkC9XKNYy4T5iGy54fUQYQum+sS5blQVy9O4WUres/CX9Mwv8WlHBbdmJgvoKB
+          qxefGO2NL95zi1usdi3+MRj2gEalr4PdK9eSZ0iKZkY7mrw7hpb76nGATfWwLdW4
+          VeFTSimyzAO2Lfi1ebkz6AK8ACxGuJzx3Y160RTn/wY7yGk5fQ7I4HcZzQZnu541
+          9Swg+7G+4ibYvOUYNQIDAQABo2MwYTAdBgNVHQ4EFgQUhgLIDbJ6A5QmPcz8EzQd
+          TUv3FHcwHwYDVR0jBBgwFoAUhgLIDbJ6A5QmPcz8EzQdTUv3FHcwDwYDVR0TAQH/
+          BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYwDQYJKoZIhvcNAQELBQADggGBACqp6xAV
+          usj0m/EqwY7JGmbvz9vTdPkM/KkLbnCxdyzqrWtGrnXyzgPPv+ozp4jk27H/JhW1
+          xlxhFzoVtDdQqJJ/sk2N0JIHjls1qoyh+AfUev0RWEx+yaSO+pAlCOxAQIe5OyQb
+          z7aHiaqowY+OPVhzQnDWi0dEb/GTZALGmK5kp+RkVknHZFEficEV5URnLlW+5z2o
+          L1zTwrxj/yyYiZCPpAZICMD/cOyjTTjyUXtFYwRBdT9yS1O1mF60GWbDQZxhPmSu
+          1Uhu9ViRZer97BnRjNgUdyj6ZFHfc4nLkCMs+ha9ZcDNi23p9Yfi+7n2YhNWTNAz
+          OeyLV+vATi6Gx4eKwT0HyCUxOZ+Xbnh966DRyJLnTd0bJmLN9vf45nDbIBs8A6yv
+          F8sCMWexGXD+UD+QknFw3s4XPqQl76b0XFlATzMZRjtL1gmBf+DYieJubESNEjNg
+          gsv9yqNp3dNLc+lo/bL6dgku41/NZW/Or4bfVwbCL/czdjhTBg8Iptd9VQ==
+          -----END CERTIFICATE-----
           READYMAID_SEO_BROKER_CA
           cat /etc/ssl/certs/ca-certificates.crt "$RUNNER_TEMP/readymaid-seo-broker-ca.crt" > "$RUNNER_TEMP/readymaid-ca-bundle.crt"
           echo "CURL_CA_BUNDLE=$RUNNER_TEMP/readymaid-ca-bundle.crt" >> "$GITHUB_ENV"
