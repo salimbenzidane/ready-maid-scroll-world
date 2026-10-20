@@ -84,7 +84,7 @@ function blankPlan(){return {Morning:blankRows(),"Late Morning":blankRows(),Afte
 function getTemplateArt(key){var map={childcare:{cls:"childcare",emoji:"🍼",title:"Baby / Childcare",sub:"Fixed visual for families who mainly need newborn, baby or child support."},elderly:{cls:"elderly",emoji:"👵",title:"Elderly Care",sub:"Fixed visual for companionship, daily support and elderly-care routines."},housework:{cls:"housework",emoji:"🧹",title:"Housework & Cooking",sub:"Fixed visual for cleaning, organising and daily cooking routines."}};return map[key]||map.housework}
 function defaultState(){return {currentTemplate:"housework",meta:{family:"",helper:"",notes:""},plans:{weekday:JSON.parse(JSON.stringify(templateData.housework)),weekend:blankPlan()}}}
 var state=defaultState();
-function save(){try{state.currentTemplate=currentTemplate;localStorage.setItem("readymaid_routine_planner_v11",JSON.stringify(state));document.getElementById("saveState").textContent="Saved"}catch(e){document.getElementById("saveState").textContent="Not saved"}}
+function save(){try{state.currentTemplate=currentTemplate;localStorage.setItem("readymaid_routine_planner_v11",JSON.stringify(state));document.getElementById("saveState").textContent=languageText("Saved","Saved")}catch(e){document.getElementById("saveState").textContent=languageText("Not saved","Not saved")}}
 function load(){try{var raw=localStorage.getItem("readymaid_routine_planner_v11");if(raw){state=JSON.parse(raw)}}catch(e){}currentTemplate=state.currentTemplate||"housework"}
 function clone(x){return JSON.parse(JSON.stringify(x))}
 function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]})}
