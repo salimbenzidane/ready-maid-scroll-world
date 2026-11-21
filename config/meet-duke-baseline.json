@@ -7,7 +7,7 @@
   "hashes": {
     "meetDukeStyle": "2349588f6b17e291a935a6e154d6654a6e84eb1d882bc5cdebd7be538a949bdd",
     "meetDukeSection": "9c48f1696bdd35fc3cf35160a49c3ecbd511672dd0a7b95f4b3d759ea663dde0",
-    "scriptJs": "ddad9bc06ca64251029722d9fb236c227fa36c9329b43288c9f04d8e39eee84c"
+    "scriptJs": "60d161047616601b17b764ebdb5613fc5a7d2372357cf835ea21803dceef79db"
   },
   "expected": {
     "videoCards": 7,
