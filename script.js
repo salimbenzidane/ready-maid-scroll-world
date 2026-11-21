@@ -1,6 +1,51 @@
 // READY MAID RESPONSIVE HOMEPAGE — Meet DUKE locked production baseline
 'use strict';
 
+// Measure a Ready Maid WhatsApp link selection. This records a click only;
+// it cannot confirm that WhatsApp opened or that a message was sent/received.
+(() => {
+  const measurementId = 'G-80EJ9M4TG3';
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', measurementId);
+
+  if (!document.querySelector('[data-readymaid-ga4]')) {
+    const tag = document.createElement('script');
+    tag.async = true;
+    tag.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    tag.dataset.readymaidGa4 = 'true';
+    document.head.appendChild(tag);
+  }
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    const link = target instanceof Element ? target.closest('a[href]') : null;
+    if (!link) return;
+
+    const destination = new URL(link.href, window.location.href);
+    const isReadymaidWaMe = destination.hostname === 'wa.me'
+      && destination.pathname.replace(/^\/+/, '').split('/')[0] === '60123790677';
+    const isReadymaidApi = destination.hostname === 'api.whatsapp.com'
+      && destination.searchParams.get('phone') === '60123790677';
+    if (!isReadymaidWaMe && !isReadymaidApi) return;
+
+    const linkLocation = link.matches('.floating-whatsapp') ? 'floating'
+      : link.closest('.mobile-sticky-cta') ? 'mobile_sticky'
+        : link.closest('header, nav') ? 'header'
+          : link.closest('footer') ? 'footer'
+            : 'content';
+    const linkText = (link.getAttribute('aria-label') || link.textContent || 'WhatsApp')
+      .replace(/\s+/g, ' ').trim().slice(0, 80);
+
+    window.gtag('event', 'whatsapp_click', {
+      link_url: `${destination.origin}${destination.pathname}`,
+      link_text: linkText,
+      link_location: linkLocation
+    });
+  }, true);
+})();
+
 // P0 COMPLIANCE LINKS — execute first, before any optional homepage behavior.
 (() => {
   const quickLinks = [...document.querySelectorAll('.site-footer .footer-column')]

@@ -55,7 +55,7 @@ export const validateMeetDuke = ({ index, script, sitemap, refund, fees }) => {
   if (!refund.includes('Refund &amp; Cancellation Policy') && !refund.includes('Refund & Cancellation Policy')) {
     errors.push('refund-policy page lost the approved heading');
   }
-  if (!fees.includes('RM14,999')) errors.push('fees policy lost Standard Package RM14,999');
+  if (!fees.includes('RM15,500')) errors.push('fees policy lost Standard Package RM15,500');
   for (const url of [
     'https://readymaid.my/refund-policy/',
     'https://readymaid.my/fees-payment-replacement-policy/'
