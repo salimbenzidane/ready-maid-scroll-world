@@ -1,0 +1,56 @@
+/* Readymaid: header WhatsApp polish + persistent contact button ONLY. */
+.wa-header {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:linear-gradient(165deg,#20eb77 0%,#05c85b 31%,#05a94c 72%,#00863a 100%);
+  border-color:rgba(0,116,57,.58);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.58),inset 0 -2px 0 rgba(0,91,48,.14),0 8px 18px rgba(0,142,73,.18),0 1px 3px rgba(5,49,69,.11);
+  text-shadow:0 1px 1px rgba(0,58,35,.16);
+}
+.wa-header::after {
+  content:"";position:absolute;inset:2px 8px auto 8px;height:42%;
+  border-radius:100% 100% 55% 55% / 100% 100% 40% 40%;
+  background:linear-gradient(to bottom,rgba(255,255,255,.20),transparent);
+  pointer-events:none;z-index:0;
+}
+.wa-header > svg,.wa-header > span {position:relative;z-index:1;flex-shrink:0;}
+.wa-header > span {flex-shrink:1;}
+.wa-header > .wa-brand-mark {fill:#fff;stroke:none;stroke-width:0;}
+.wa-header > .arrow-icon {fill:none;stroke:#fff;stroke-width:1.85;}
+.wa-header:hover {filter:brightness(1.035);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),0 11px 23px rgba(0,142,73,.25);}
+.wa-header:focus-visible {outline:3px solid #6b4bfb;outline-offset:4px;}
+
+.wa-float {
+  position:fixed;right:clamp(16px,2vw,28px);bottom:calc(22px + env(safe-area-inset-bottom,0px));
+  z-index:45;display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  min-height:62px;padding:7px 20px 7px 8px;border-radius:999px;
+  border:1px solid rgba(0,117,55,.62);
+  background:linear-gradient(157deg,#12df6f 0%,#06bd55 47%,#049c48 100%);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.56),inset 0 -2px 0 rgba(0,76,37,.22),0 11px 28px rgba(0,108,58,.25),0 3px 7px rgba(10,50,65,.12);
+  color:#fff;font:800 15px/1.1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.025em;
+  text-decoration:none;white-space:nowrap;isolation:isolate;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.wa-float::before {content:"";position:absolute;inset:1px;border:1px solid rgba(255,255,255,.22);border-radius:inherit;pointer-events:none;}
+.wa-float-icon {
+  display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(160deg,rgba(255,255,255,.18),rgba(0,109,54,.2));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.27);pointer-events:none;
+}
+.wa-float-icon svg {width:28px;height:28px;fill:#fff;stroke:none;display:block;}
+.wa-float-label {position:relative;pointer-events:none;}
+.wa-float:hover {transform:translateY(-3px);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.56),0 16px 31px rgba(0,108,58,.33);color:#fff;}
+.wa-float:active {transform:translateY(0);}
+.wa-float:focus-visible {outline:3px solid #6840ec;outline-offset:4px;}
+/* The existing delayed full-width mobile CTA is replaced, not stacked. */
+#mobile-bottom {display:none !important;}
+@media(max-width:600px){
+  .wa-float {right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));width:60px;height:60px;min-height:60px;padding:5px;gap:0;border-radius:50%;}
+  .wa-float-icon {width:49px;height:49px;}
+  .wa-float-icon svg {width:30px;height:30px;}
+  .wa-float-label {display:none;}
+}
+@media(hover:none){.wa-float:hover {transform:none;}}
+@media(prefers-reduced-motion:reduce){.wa-float,.wa-header {transition:none;}}

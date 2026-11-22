@@ -1,0 +1,243 @@
+/* Readymaid Final Artwork focus pass: ONLY #services. Brand and global layout are untouched. */
+#services.services-fa {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:clamp(40px,5vw,76px) 0 clamp(56px,6vw,88px);
+  background:
+    radial-gradient(ellipse 45% 49% at 4% 21%,rgba(13,202,227,.070),transparent 74%),
+    radial-gradient(ellipse 42% 51% at 96% 65%,rgba(129,75,228,.060),transparent 77%),
+    linear-gradient(180deg,#fff 0%,#fafcff 65%,#fff 100%);
+}
+#services.services-fa::before {
+  content:"";
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(5,184,226,.24),rgba(153,68,227,.22),transparent);
+}
+#services.services-fa::after {
+  content:"";position:absolute;pointer-events:none;
+  right:-60px;top:8%;height:310px;width:280px;
+  background:linear-gradient(128deg,rgba(255,255,255,0) 39%,rgba(23,204,235,.045) 40% 47%,rgba(111,77,227,.05) 48% 60%,transparent 61%);
+  transform:rotate(-10deg);
+}
+#services.services-fa .wrap {position:relative;z-index:1;}
+#services.services-fa .care-heading {max-width:840px;margin:0 auto;text-align:center;}
+#services.services-fa .care-kicker {
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:0 0 14px;
+  color:#1384b5;font-size:11px;letter-spacing:.21em;font-weight:840;line-height:1.5;
+}
+#services.services-fa .care-kicker-mark {height:2px;width:27px;border-radius:50px;background:linear-gradient(90deg,#12d5e6,#a344ea);}
+#services.services-fa #services-heading {
+  font-family:var(--display);font-weight:850;font-style:normal;
+  margin:0;font-size:clamp(35px,3.4vw,56px);line-height:1.1;letter-spacing:-.057em;
+  color:#081b57;
+}
+#services.services-fa #services-heading em {
+  font-style:italic;font-weight:880;
+  background:linear-gradient(100deg,#088ccc,#347be3 42%,#8b33df 95%);
+  background-clip:text;-webkit-background-clip:text;color:transparent;
+}
+#services.services-fa .care-subheading {
+  color:#526484;font-size:clamp(14px,1.05vw,17px);font-weight:470;
+  line-height:1.55;letter-spacing:-.011em;
+  margin:15px auto 36px;max-width:720px;
+}
+#services.services-fa .care-collection-header {display:none;}
+#services.services-fa .care-carousel {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(16px,1.85vw,30px);overflow:visible;padding:8px 4px 28px;
+  scroll-behavior:smooth;
+}
+#services.services-fa a.service-card {
+  --care-accent:#00b5d7;
+  display:flex;flex-direction:column;min-width:0;
+  position:relative;isolation:isolate;overflow:hidden;
+  border:1px solid #e2eaf4;border-radius:27px;
+  background:#fff;
+  box-shadow:0 22px 45px -25px rgba(18,50,108,.29),0 3px 10px rgba(21,53,104,.04);
+  color:#081b57;
+  transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease;
+  text-decoration:none;
+}
+#services.services-fa .service-card--housework {--care-accent:#188bf0;}
+#services.services-fa .service-card--childcare {--care-accent:#9953dd;}
+#services.services-fa a.service-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 32px 55px -27px rgba(18,50,108,.30),0 7px 18px rgba(21,53,104,.07);
+  border-color:rgba(79,157,224,.45);
+}
+#services.services-fa a.service-card:focus-visible {outline:3px solid #17caeb;outline-offset:5px;}
+#services.services-fa .service-media {
+  aspect-ratio:1.4;
+  position:relative;overflow:hidden;background:#dbe8f8;
+  border-radius:0;
+}
+#services.services-fa .service-media::after {
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(2,17,67,.09),transparent 23%,transparent 78%,rgba(4,24,68,.09));
+}
+#services.services-fa .service-media img {
+  display:block;width:100%;height:100%;object-fit:cover;
+  filter:saturate(.99) contrast(1.015);transform:scale(1);
+  transition:transform .45s ease;
+}
+#services.services-fa a.service-card:hover .service-media img {transform:scale(1.045);}
+#services.services-fa .service-card--elderly .service-media img {object-position:50% 35%;}
+#services.services-fa .service-card--housework .service-media img {object-position:50% 26%;}
+#services.services-fa .service-card--childcare .service-media img {object-position:50% 27%;}
+/* One folded corner, restrained like a physical paper detail, not a neon box. */
+#services.services-fa .service-corner {
+  position:absolute;z-index:2;top:0;left:0;
+  width:69px;height:69px;border-radius:0 0 23px 0;
+  background:linear-gradient(136deg,#16d8e7,#0086c7 94%);
+  display:grid;place-items:center;
+  box-shadow:3px 5px 14px rgba(12,56,108,.15);
+}
+#services.services-fa .service-card--housework .service-corner {background:linear-gradient(135deg,#15c6f0,#1366dd);}
+#services.services-fa .service-card--childcare .service-corner {background:linear-gradient(135deg,#b37af0,#8144d3);}
+#services.services-fa .service-corner::before {
+  content:"";position:absolute;top:0;right:0;
+  width:19px;height:19px;background:rgba(255,255,255,.20);
+  clip-path:polygon(0 0,100% 0,100% 100%);
+}
+#services.services-fa .service-corner svg {width:36px;height:36px;fill:none;stroke:#fff;stroke-width:1.75;}
+#services.services-fa .care-photo-crease {
+  position:absolute;pointer-events:none;right:0;top:0;z-index:2;width:42px;height:42px;
+  background:linear-gradient(135deg,rgba(255,255,255,.98) 0 46%,rgba(229,246,255,.98) 47%,rgba(179,207,238,.7) 100%);
+  clip-path:polygon(0 0,100% 0,100% 100%);opacity:.8;
+  filter:drop-shadow(-2px 2px 2px rgba(14,37,82,.1));
+}
+#services.services-fa .service-details {
+  flex:1;position:relative;z-index:1;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  background:linear-gradient(145deg,#fff 0%,#fff 74%,#f4faff 100%);
+  padding:24px 24px 27px;min-height:170px;
+  border-top:1px solid rgba(220,232,247,.8);
+}
+#services.services-fa .care-card-copy {min-width:0;max-width:320px;position:relative;z-index:1;}
+#services.services-fa .service-details p {
+  display:inline-flex;align-items:center;gap:7px;
+  font-weight:810;letter-spacing:.145em;color:#008cae;
+  font-size:10.5px;line-height:1.2;margin:0 0 9px;
+}
+#services.services-fa .service-details p::before {content:"";height:5px;width:5px;border-radius:50%;background:var(--care-accent);}
+#services.services-fa .service-details h3 {
+  color:#071b56;font-size:clamp(23px,2vw,31px);font-weight:860;
+  letter-spacing:-.055em;line-height:1.05;margin:0 0 10px;
+}
+#services.services-fa .service-details .care-card-copy>span {
+  display:block;color:#50617f;font-size:clamp(13px,1.01vw,15px);
+  line-height:1.46;font-weight:490;max-width:295px;
+}
+#services.services-fa .service-details .service-card-arrow {
+  z-index:2;width:49px;height:49px;flex:none;border:0;
+  background:linear-gradient(135deg,#00cfe7 0%,#087ed9 57%,#7f3cdd 100%);
+  box-shadow:0 9px 19px rgba(13,92,183,.16),inset 0 1px 1px rgba(255,255,255,.44);
+  color:#fff;border-radius:50%;
+  display:grid;place-items:center;
+  transition:transform .24s ease,box-shadow .24s ease;
+}
+#services.services-fa .service-details .service-card-arrow svg {width:24px;height:24px;stroke-width:2;stroke:currentColor;fill:none;}
+#services.services-fa a.service-card:hover .service-card-arrow {transform:translateX(3px);box-shadow:0 11px 25px rgba(13,92,183,.23);}
+#services.services-fa a.service-card .bottom-fold {
+  position:absolute;right:0;bottom:0;z-index:0;width:96px;height:71px;opacity:.67;
+  background:linear-gradient(134deg,rgba(239,253,255,0) 0 42%,rgba(105,227,241,.5) 43% 62%,rgba(8,182,219,.72) 100%);
+  clip-path:polygon(100% 0,100% 100%,0 100%);
+}
+#services.services-fa a.service-card--housework .bottom-fold {background:linear-gradient(134deg,transparent 0 42%,rgba(135,208,255,.45) 43% 65%,rgba(16,125,228,.66) 100%);}
+#services.services-fa a.service-card--childcare .bottom-fold {background:linear-gradient(134deg,transparent 0 42%,rgba(222,178,255,.45) 43% 65%,rgba(145,83,220,.66) 100%);}
+#services.services-fa .care-carousel-footer {display:none;}
+#services.services-fa .visual-disclaimer {
+  margin:4px auto 0;max-width:850px;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  text-align:center;font-size:11.5px;line-height:1.5;
+  color:#6a7792;font-weight:460;
+}
+#services.services-fa .visual-disclaimer svg {height:17px;width:17px;flex:none;fill:none;stroke:#7085ac;stroke-width:1.45;stroke-linecap:round;}
+@media (max-width:1000px) and (min-width:701px) {
+  #services.services-fa .service-grid {gap:14px;}
+  #services.services-fa .service-media {aspect-ratio:1.06;}
+  #services.services-fa .service-details {min-height:177px;padding:20px 15px 24px;gap:8px;align-items:flex-start;}
+  #services.services-fa .service-details h3 {font-size:24px;}
+  #services.services-fa .service-details .care-card-copy>span {font-size:13px;}
+  #services.services-fa .service-details .service-card-arrow {width:37px;height:37px;align-self:flex-end;}
+  #services.services-fa .service-details .service-card-arrow svg {width:18px;height:18px;}
+}
+@media (max-width:700px) {
+  #services.services-fa {padding:32px 0 55px;}
+  #services.services-fa::after {display:none;}
+  #services.services-fa .care-kicker {font-size:9px;letter-spacing:.13em;gap:8px;margin-bottom:8px;}
+  #services.services-fa .care-kicker-mark {width:16px;}
+  #services.services-fa #services-heading {font-size:clamp(27px,6.35vw,37px);line-height:1.14;letter-spacing:-.052em;max-width:430px;margin:auto;}
+  #services.services-fa .care-subheading {font-size:13px;line-height:1.47;max-width:340px;margin:10px auto 18px;}
+  #services.services-fa .care-collection-header {display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px;}
+  #services.services-fa .care-collection-label {font-size:10px;letter-spacing:.11em;font-weight:860;color:#2d507b;}
+  #services.services-fa .care-swipe-hint {display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:750;letter-spacing:.08em;color:#1681b3;white-space:nowrap;}
+  #services.services-fa .care-swipe-hint svg {width:16px;height:16px;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;}
+  #services.services-fa .service-grid {
+    display:flex;overflow-x:auto;overflow-y:hidden;
+    flex-wrap:nowrap;gap:13px;
+    margin:0 -12px;padding:3px 12px 19px;
+    scroll-snap-type:x mandatory;scroll-padding-inline:12px;
+    -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+    scrollbar-width:none;
+  }
+  #services.services-fa .service-grid::-webkit-scrollbar {display:none;}
+  #services.services-fa a.service-card {
+    flex:0 0 min(81%,340px);min-width:0;
+    border-radius:22px;scroll-snap-align:start;scroll-snap-stop:always;
+    box-shadow:0 14px 33px -15px rgba(16,42,104,.22),0 3px 9px rgba(30,63,121,.05);
+  }
+  #services.services-fa .service-media {aspect-ratio:1.33;}
+  #services.services-fa .service-media img {height:100%;}
+  #services.services-fa .service-corner {height:58px;width:58px;border-radius:0 0 19px 0;}
+  #services.services-fa .service-corner svg {height:31px;width:31px;}
+  #services.services-fa .care-photo-crease {height:31px;width:31px;}
+  #services.services-fa .service-details {padding:20px 17px 22px;min-height:158px;gap:10px;align-items:center;}
+  #services.services-fa .service-details p {font-size:9px;letter-spacing:.11em;margin-bottom:8px;}
+  #services.services-fa .service-details h3 {font-size:clamp(23px,6.15vw,28px);margin-bottom:7px;}
+  #services.services-fa .service-details .care-card-copy>span {font-size:13px;line-height:1.42;}
+  #services.services-fa .service-details .service-card-arrow {width:44px;height:44px;}
+  #services.services-fa .service-details .service-card-arrow svg {width:22px;height:22px;}
+  #services.services-fa a.service-card .bottom-fold {height:54px;width:70px;}
+  #services.services-fa .care-carousel-footer {
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 4px 0;gap:14px;min-height:47px;
+  }
+  #services.services-fa .care-progress {display:flex;align-items:center;gap:5px;min-width:79px;}
+  #services.services-fa .care-progress span {height:4px;width:17px;border-radius:9px;background:#dbe3f2;transition:width .18s,background .18s;}
+  #services.services-fa .care-progress span.is-active {width:28px;background:linear-gradient(90deg,#0ecde1,#8850df);}
+  #services.services-fa .care-slide-count {font-size:13px;letter-spacing:.06em;color:#0b2868;font-weight:840;margin-right:auto;white-space:nowrap;}
+  #services.services-fa .care-slide-count b {font-size:11px;font-weight:550;color:#8594ad;}
+  #services.services-fa .care-nav-buttons {display:flex;align-items:center;gap:8px;}
+  #services.services-fa .care-nav {
+    display:grid;place-items:center;width:43px;height:43px;border-radius:50%;
+    border:1px solid #cfdef1;background:linear-gradient(150deg,#fff,#f3f8ff);
+    color:#143873;box-shadow:0 3px 9px rgba(26,56,115,.05);
+    transition:background .2s,transform .2s;
+  }
+  #services.services-fa .care-nav svg {width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;}
+  #services.services-fa .care-nav-next {background:linear-gradient(130deg,#08c9e5,#0874d6 60%,#7e3edc);border:0;color:#fff;box-shadow:0 7px 16px rgba(24,102,188,.16);}
+  #services.services-fa .care-nav:not(:disabled):active {transform:scale(.95);}
+  #services.services-fa .care-nav:disabled {opacity:.42;cursor:default;}
+  #services.services-fa .visual-disclaimer {margin:12px auto 0;max-width:440px;font-size:10.5px;line-height:1.43;gap:7px;text-align:left;padding:10px 12px;border-radius:14px;background:#f5f8ff;border:1px solid #edf1fa;}
+  #services.services-fa .visual-disclaimer svg {height:16px;width:16px;}
+}
+@media (max-width:360px) {
+  #services.services-fa {padding-top:29px;}
+  #services.services-fa #services-heading {font-size:clamp(25px,7.2vw,27px);}
+  #services.services-fa .care-subheading {font-size:12px;}
+  #services.services-fa a.service-card {flex-basis:84%;}
+  #services.services-fa .service-details {min-height:155px;padding:16px 14px 19px;}
+  #services.services-fa .service-details h3 {font-size:23px;}
+  #services.services-fa .service-details .care-card-copy>span {font-size:12px;}
+  #services.services-fa .service-details .service-card-arrow {width:40px;height:40px;}
+  #services.services-fa .care-collection-label {font-size:9px;}
+  #services.services-fa .care-swipe-hint {font-size:8px;}
+}
+@media (prefers-reduced-motion:reduce){
+  #services.services-fa .service-grid{scroll-behavior:auto;}
+  #services.services-fa a.service-card,#services.services-fa .service-media img,
+  #services.services-fa .service-card-arrow,#services.services-fa .care-progress span{transition:none;}
+}

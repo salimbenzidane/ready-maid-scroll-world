@@ -46,15 +46,15 @@ jobs:
         run: node scripts/seo-create-renderer.mjs --self-test
       - name: Prove minimal deterministic SEO REDIRECT executor
         run: node scripts/seo-redirect-worker.mjs --self-test
-      - name: Prove Meet DUKE guard rejects injected regressions
+      - name: Prove V2 Homepage guard rejects injected regressions
         run: node scripts/vercel-seo-guard.mjs --self-test
-      - name: Verify cryptographic Meet DUKE baseline
+      - name: Verify cryptographic V2 Homepage baseline
         run: node scripts/vercel-seo-guard.mjs --ci
       - name: Audit sitemap pages, metadata, assets and links
         run: node scripts/seo-site-audit.mjs
       - name: Verify sitemap discovery for published guides
         run: python scripts/seo_surface_sync.py --check
-      - name: Verify protected Meet DUKE remote media
+      - name: Verify retained Meet DUKE remote media
         run: node scripts/check-duke-media.mjs
 
   rendered-screenshots:
@@ -75,15 +75,15 @@ jobs:
             sleep 1
           done
           curl -fsS http://127.0.0.1:4173/ >/dev/null
-      - name: Capture desktop and mobile Meet DUKE evidence
+      - name: Capture desktop and mobile V2 Homepage evidence
         run: |
           mkdir -p seo-qa-artifacts
           CHROME_BIN=$(command -v google-chrome || command -v google-chrome-stable)
-          "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=4000 --window-size=1440,1200 --screenshot=seo-qa-artifacts/meet-duke-desktop.png http://127.0.0.1:4173/#duke
-          "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=4000 --window-size=390,844 --screenshot=seo-qa-artifacts/meet-duke-mobile.png http://127.0.0.1:4173/#duke
+          "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=4000 --window-size=1440,1200 --screenshot=seo-qa-artifacts/homepage-v2-desktop.png http://127.0.0.1:4173/#top
+          "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=4000 --window-size=390,844 --screenshot=seo-qa-artifacts/homepage-v2-mobile.png http://127.0.0.1:4173/#top
           "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=2500 --window-size=390,844 --screenshot=seo-qa-artifacts/guides-mobile.png http://127.0.0.1:4173/guides/
-          test $(stat -c%s seo-qa-artifacts/meet-duke-desktop.png) -gt 10000
-          test $(stat -c%s seo-qa-artifacts/meet-duke-mobile.png) -gt 10000
+          test $(stat -c%s seo-qa-artifacts/homepage-v2-desktop.png) -gt 10000
+          test $(stat -c%s seo-qa-artifacts/homepage-v2-mobile.png) -gt 10000
           test $(stat -c%s seo-qa-artifacts/guides-mobile.png) -gt 10000
       - uses: actions/upload-artifact@v4
         with:

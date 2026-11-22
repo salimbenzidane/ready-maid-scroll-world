@@ -1,0 +1,125 @@
+/* READYMAID — focused FA finish, 2026-11-19. Current approved design, no redesign. */
+/* Make actual agency media clearer while keeping it recognisably genuine. */
+.moments-feature{margin-top:19px;margin-bottom:14px}
+.moments-title-row{margin-bottom:12px;gap:12px}
+.moments-title-row h2{font-size:clamp(17px,1.42vw,22px);letter-spacing:-.04em}
+.moments-seal{border:1px solid rgba(255,255,255,.75);box-shadow:0 4px 14px rgba(5,99,191,.24),inset 0 1px 2px rgba(255,255,255,.4)}
+.moments-photos{gap:11px}
+.moment-tile{border:3px solid rgba(255,255,255,.99);border-radius:18px;background:#edf3f9;box-shadow:0 8px 20px rgba(14,44,107,.14),0 0 0 1px rgba(136,202,244,.5)}
+.moment-tile:before{inset:48% 0 0;background:linear-gradient(180deg,transparent 0%,rgba(2,21,61,.24) 38%,rgba(3,19,60,.89) 100%)}
+.moment-tile:after{width:43px;height:28px;opacity:.9}
+.moment-tile img{filter:brightness(1.13) contrast(1.045) saturate(1.06);transform:scale(1.015)}
+.moment-tile:hover img{transform:scale(1.055)}
+.moment-tile span{left:0;right:0;bottom:0;padding:17px 10px 9px;gap:3px;text-shadow:0 1px 4px rgba(0,12,36,.7)}
+.moment-tile strong{font-size:clamp(11px,1.02vw,15px);line-height:1.13;font-weight:810}
+.moment-tile small{font-size:clamp(9px,.76vw,11px);line-height:1.15;color:#e4f5ff}
+/* Refined depth around original uncropped customer footage. */
+.experience-panel{background:radial-gradient(ellipse 52% 40% at 4% 5%,rgba(5,223,246,.65),transparent 82%),radial-gradient(ellipse 75% 62% at 106% 100%,rgba(207,113,241,.50),transparent 80%),linear-gradient(128deg,#075daa 0%,#273ea9 31%,#4325a0 66%,#812ac7 100%);border:2px solid rgba(204,228,255,.92);box-shadow:0 20px 43px rgba(41,43,146,.18),inset 0 0 0 1px rgba(255,255,255,.29),0 0 24px rgba(45,179,244,.13)}
+.portrait-shell{box-shadow:0 0 0 4px rgba(255,255,255,.19),0 0 27px rgba(105,210,255,.64),0 18px 26px rgba(12,23,103,.25)}
+.experience-line{line-height:1.17;max-width:230px}
+.experience-copy{max-width:230px}
+.video-sound{background:linear-gradient(110deg,rgba(2,84,159,.97),rgba(42,42,154,.95));box-shadow:0 4px 14px rgba(1,25,79,.32),inset 0 1px rgba(255,255,255,.2)}
+/* Entire service card has a real link; no overlay hacks or small hit target. */
+a.service-card{display:block;color:inherit;text-decoration:none;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+a.service-card:hover{transform:translateY(-4px);box-shadow:0 17px 35px rgba(20,58,127,.20);border-color:#7adcf5}
+a.service-card:focus-visible{outline:3px solid #08bfe7;outline-offset:4px}
+.service-details .service-card-arrow{width:47px;height:47px;border-radius:50%;flex:none;display:grid;place-items:center;background:#f3faff;border:1px solid #91dffc;color:#077fbe}
+a.service-card:hover .service-card-arrow{background:linear-gradient(130deg,#12d0e9,#0877cf);color:#fff;border-color:transparent}
+.service-details .service-card-arrow svg{height:23px;width:23px;stroke:currentColor;stroke-width:2;fill:none}
+.service-card .service-media img{transition:transform .35s ease}
+a.service-card:hover .service-media img{transform:scale(1.025)}
+/* More deliberate small-screen layout: the offer should not be buried after four photos. */
+@media(max-width:600px){
+ .fa-hero-grid{grid-template-areas:'trust' 'intro' 'video' 'needs' 'offer' 'proof';row-gap:11px}
+ .moments-feature{margin:7px 0 0}
+ .moments-title-row{margin-bottom:9px}
+ .moments-title-row h2{font-size:15px;white-space:normal}
+ .moments-photos{gap:11px}
+ .moment-tile{border-radius:15px}
+ .moment-tile:before{inset:35% 0 0}
+ .moment-tile strong{font-size:11px}
+ .moment-tile small{font-size:9px}
+ .experience-panel{box-shadow:0 12px 28px rgba(42,52,142,.20)}
+ .portrait-shell{width:min(70%,215px)}
+ .midpoint-offer-zone{margin-top:6px}
+ .midpoint-offer-terms{font-size:10px;line-height:1.35}
+ .trust-item strong,.trust-item small{font-size:clamp(9px,2.55vw,11px)}
+ .service-details .service-card-arrow{width:40px;height:40px}
+ .service-details .service-card-arrow svg{width:22px;height:22px}
+}
+@media(max-width:360px){.trust-item strong,.trust-item small{font-size:9px}.moments-title-row h2{font-size:14px}}
+@media(prefers-reduced-motion:reduce){a.service-card,.service-card .service-media img{transition:none}}
+/* At normal phone widths, reproduce the approved compact text + portrait composition.
+   The actual video remains 9:16 and can be expanded to view captions clearly. */
+@media (min-width:375px) and (max-width:600px){
+ .fa-hero-grid{grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr);grid-template-areas:'trust trust' 'intro video' 'needs needs' 'offer offer' 'proof proof';gap:12px 10px}
+ .hero-lead{align-self:center}
+ .hero-eyebrow{font-size:9.1px;letter-spacing:.085em;line-height:1.33}
+ .hero-accent-line{margin:9px 0 14px;width:85px;height:4px}
+ .hero-lead h1{font-size:clamp(23px,6.12vw,32px);letter-spacing:-.058em;line-height:1.09}
+ .hero-intro{font-size:11px;line-height:1.38;margin-top:13px}
+ .experience-panel{align-self:start;padding:8px 7px 11px;border-radius:22px;min-height:0}
+ .experience-header{display:none}
+ .portrait-shell{width:100%;max-width:180px;margin:0 auto;padding:3px}
+ .experience-body{display:block}
+ .portrait-view{height:auto;aspect-ratio:9/16}
+ .video-bottom-actions{left:5px;right:5px;bottom:7px;gap:3px}
+ .video-sound{height:27px;padding:0 5px;gap:3px;font-size:7.4px;max-width:calc(100% - 54px)}
+ .video-sound svg{width:13px;height:13px}
+ .video-mini{width:26px;height:27px}
+ .video-mini svg{width:15px;height:15px}
+ #video-expand.video-mini{display:flex}
+ .portrait-badge{top:11px;font-size:7.5px;padding:4px 6px;gap:5px}
+ .need-cards{margin-top:3px}
+ .moments-feature{margin-top:10px}
+}
+/* Readable trust strip on narrow phones; prevent overlapping badge labels. */
+@media(max-width:600px){
+ .trust-row{gap:0;min-height:54px;padding:7px 3px}
+ .trust-item{flex:1 1 0;gap:4px;padding:0 3px;justify-content:center;min-width:0}
+ .trust-item svg{width:23px;height:23px;flex:0 0 23px}
+ .trust-item span{min-width:0}
+ .trust-item strong,.trust-item small{white-space:normal;overflow-wrap:normal;line-height:1.1;font-size:clamp(9px,2.36vw,10.4px)}
+}
+/* Match approved optical spacing between the customer-story title words. */
+@media(min-width:801px){.experience-header h2{letter-spacing:-.027em;word-spacing:.09em}}
+
+/* Genuine Readymaid proof: photo-led instead of four undifferentiated thumbnails. */
+.moments-swipe-hint{display:none}
+@media (min-width:601px){
+  .moments-photos{grid-template-columns:1.35fr 1fr 1fr 1fr;gap:9px}
+  .moment-tile:first-child{box-shadow:0 10px 23px rgba(10,51,123,.20),0 0 0 1px rgba(40,174,238,.49)}
+  .moment-tile:first-child strong{font-size:clamp(12px,1.08vw,16px)}
+}
+.moment-tile:first-child img{object-position:50% 40%}
+.moment-tile:nth-child(2) img{object-position:50% 45%}
+.moment-tile:nth-child(3) img{object-position:50% 25%}
+.moment-tile:nth-child(4) img{object-position:50% 50%}
+.moment-tile:focus-visible{outline:3px solid #0dc7ec;outline-offset:3px}
+.gallery-navigation{display:flex;justify-content:space-between;gap:10px;padding:11px 0 0}
+.gallery-navigation button{min-width:74px;min-height:42px;display:grid;place-items:center;border:1px solid #abd6f6;border-radius:25px;background:linear-gradient(130deg,#f7fdff,#eee8ff);color:#122d77;font-size:27px;cursor:pointer}
+.gallery-navigation button:hover,.gallery-navigation button:focus-visible{background:#d9f4ff;outline-color:#02badd}
+@media(max-width:600px){
+  .moments-swipe-hint{display:inline-block;margin-left:auto;flex:none;font-weight:750;font-size:10px;letter-spacing:0;color:#087db4}
+  .moments-rule{display:none}
+  .moments-photos{grid-auto-columns:minmax(196px,60%);padding:2px 10px 13px 2px}
+  .moment-tile{aspect-ratio:1.32/1;scroll-snap-align:start}
+  .moment-tile strong{font-size:12px}
+  .moment-tile small{font-size:10px}
+}
+@media(max-width:360px){
+  .moments-photos{grid-auto-columns:minmax(175px,62%)}
+  .moments-swipe-hint{font-size:9px}
+  /* Service choices and the price come before the taller video on narrow phones. */
+  .fa-hero-grid{grid-template-areas:'trust' 'intro' 'needs' 'offer' 'video' 'proof'}
+  .hero-lead h1{font-size:clamp(28px,9.2vw,33px)}
+  .hero-intro{font-size:12px;line-height:1.45}
+  .portrait-shell{width:min(66%,198px)}
+}
+/* Keep all four photos aligned on desktop; feature the faces without extra height. */
+@media(min-width:601px){
+ .moments-photos{grid-template-rows:165px;align-items:stretch}
+ .moment-tile{height:100%;aspect-ratio:auto}
+}
+/* Reserve room for the image viewer's previous/next controls. */
+#gallery-content img,#gallery-content video{max-height:calc(90vh - 153px)}
