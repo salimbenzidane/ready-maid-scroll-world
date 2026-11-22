@@ -26,3 +26,10 @@
 @media(max-width:1180px){.rw-offer{height:120px}.rw-offer-left strong{font-size:clamp(16px,2vw,23px)}.rw-offer-gold-copy strong{font-size:clamp(19px,2.4vw,28px)}.rw-offer-gold-copy small{font-size:10px}.rw-offer-shield{min-width:36px}.rw-offer-link{padding-left:15%;gap:6px}.rw-offer-link strong{font-size:clamp(15px,2vw,22px)}.rw-offer-bird{top:-14px;min-width:57px;}}
 @media(max-width:700px){.rw-offer{height:121px}.rw-offer::before{top:13px}.rw-offer::after{bottom:12px}.rw-offer-left{top:13px;bottom:13px;width:38%;border-radius:14px 3px 3px 14px}.rw-offer-left strong{left:18%;top:55%;font-size:clamp(10px,3.1vw,17px);line-height:1.03}.rw-offer-bird{width:18%;min-width:55px;top:-8px;left:-5px}.rw-offer-gold{left:32%;width:42%;border-width:2px;border-radius:20px}.rw-offer-gold-inner{gap:1%;padding:6px 2%}.rw-offer-shield{min-width:21px;width:23%;max-width:38px}.rw-offer-gold-copy strong{font-size:clamp(10px,2.9vw,16px);letter-spacing:-.06em}.rw-offer-gold-copy small{font-size:8px;margin-top:6px}.rw-offer-gold-copy small::before,.rw-offer-gold-copy small::after{display:none}.rw-offer-right{left:66%;top:13px;bottom:13px;border-radius:3px 14px 14px 3px}.rw-offer-link{padding:0 3% 0 16%;gap:4px;justify-content:center;flex-direction:column;text-align:center}.rw-offer-link svg{width:22px;height:22px}.rw-offer-link strong{font-size:clamp(10px,2.7vw,14px);line-height:1.05;white-space:normal}.rw-offer-link .rw-offer-arrow{display:none}.rw-offer-right::after{left:14%;right:12%;height:2px;bottom:8%;}}
 @media(prefers-reduced-motion:reduce){.rw-offer-link{transition:none}}
+
+/* The CTA remains a real link; language switching needs no protected JS changes. */
+.rw-cta-zh,.rw-cta-ms{display:none}
+html[lang="zh-CN"] .rw-cta-en,html[lang="ms-MY"] .rw-cta-en{display:none}
+html[lang="zh-CN"] .rw-cta-zh{display:inline}
+html[lang="ms-MY"] .rw-cta-ms{display:inline}
+html[lang="zh-CN"] .rw-offer-link strong,html[lang="ms-MY"] .rw-offer-link strong{font-style:normal;letter-spacing:-.015em}
