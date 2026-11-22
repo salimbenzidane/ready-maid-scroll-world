@@ -5,10 +5,10 @@
   "source": "Owner-confirmed approved three-section Readymaid homepage",
   "hashAlgorithm": "sha256",
   "hashes": {
-    "index.html": "cbd3270dd05532ac091f332a8e4073896d1691b9dedbe1755de38b732a006562",
+    "index.html": "4ad30f4899108ba62cbccab497a70e3a7e8a3eb83853052d9b344fb57d977276",
     "script.js": "095798366030ca75d9f37e7a7e7f01bc9eb97b2bf5888bfcbcc57d51e8f984c8",
     "site-v2/styles.css": "75c370cc694ae08d912809f11868feab646a4cc6807bea8fa73b1e90aa3c1413",
-    "site-v2/footer-precision.css": "a90602881bd9a809e8b6086f3a51cc77783165a74d1c14ce67486562ed01e921",
+    "site-v2/footer-precision.css": "64ebfe4ab9b6154f3dcf8025a1a5edbbe8ccc289da2ddbe21a0a83e7ddaf45f6",
     "site-v2/video-showcase.css": "6f64e442480c229276569a554e6ba58298def3cef2bb3da115c8f85445097e91",
     "site-v2/video-showcase.js": "38617d9772115eb6b19943665111868f134cc8ef9fcb186de605ba7fbd9d1d70",
     "site-v2/site-language.js": "664613134104b1a59d134da931e4809b870d4c156c378dc68f8fccb948e17171",
