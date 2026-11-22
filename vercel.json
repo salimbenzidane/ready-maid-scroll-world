@@ -67,15 +67,5 @@
       "destination": "/",
       "permanent": true
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/assets/duke-videos/:path*",
-      "destination": "https://universal.readymaid.my/media/duke-videos/:path*"
-    },
-    {
-      "source": "/assets/duke-thumbnails/:path*",
-      "destination": "https://universal.readymaid.my/media/duke-thumbnails/:path*"
-    }
   ]
 }
