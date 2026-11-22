@@ -25,9 +25,9 @@
 
     const destination = new URL(link.href, window.location.href);
     const isReadymaidWaMe = destination.hostname === 'wa.me'
-      && destination.pathname.replace(/^\/+/, '').split('/')[0] === '60123790677';
+      && destination.pathname.replace(/^\/+/, '').split('/')[0] === '601115556666';
     const isReadymaidApi = destination.hostname === 'api.whatsapp.com'
-      && destination.searchParams.get('phone') === '60123790677';
+      && destination.searchParams.get('phone') === '601115556666';
     if (!isReadymaidWaMe && !isReadymaidApi) return;
 
     const linkLocation = link.matches('.floating-whatsapp') ? 'floating'

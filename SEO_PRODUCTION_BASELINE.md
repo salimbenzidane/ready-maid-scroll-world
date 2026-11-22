@@ -1,47 +1,28 @@
-# Ready Maid Production Baseline Lock
+# Readymaid Approved V2 Homepage Production Baseline
 
-Authoritative visual reference:
+Source of truth: accepted GitHub main in `salimbenzidane/ready-maid-scroll-world`; visual reference: approved Readymaid three-section homepage, confirmed by owner on 22 Nov 2026. This document supersedes the previous locked Meet DUKE landing-page design for the root homepage only. Protected main and existing deployment checks remain authoritative.
 
-- Historical Vercel reference deployment: `dpl_CRSeYnh13Kdijyg2L45pgBA5pdm1`
-- Reference URL: `https://ready-maid-scroll-world-ns4s804uw-readymaid.vercel.app`
-- Purpose: approved Meet DUKE homepage with DUKE hero, six video thumbnails and built-in video player.
+## Locked approved website
 
-## Source of truth
+- Keep the three major homepage sections, responsive English/Chinese/Bahasa Melayu behavior, approved gradient Readymaid R logo, original 17 video files and original customer interview.
+- Preserve the current premium native HTML/CSS compliance footer without flattening it to a photo or adding invisible click rectangles.
+- JTKSM 432 Licence C renewed until 30 Nov 2028; legal operator Agensi Pekerjaan Expert Sdn. Bhd.
+- All Readymaid WhatsApp destinations point to 601115556666.
+- FAQ wording: 2-year warranty covers Maid runaway only; customers contact Readymaid for the full terms and written agreement.
+- Homepage metadata, social preview, crawl directives, canonical, structured data and the existing GA4 WhatsApp-click event remain operational.
+- The original old landing-page visual is retired. Do not reinsert it under another homepage URL.
 
-The production source of truth is the current GitHub `main` branch. The CRSe deployment is a visual/reference baseline only. Do not proxy, rewrite, or route the whole production site to the historical deployment.
+## Retained SEO project
 
-## Locked production rule
+- Keep all 47 existing sitemap URLs and their target pages on readymaid.my, including 26 current guide articles and service/location pages.
+- Keep `/refund-policy/`, `/fees-payment-replacement-policy/`, `/licence-company-verification/`, `/contact-ready-maid/`, `/domestic-helper-faq/` live, indexable, and internally linked.
+- Keep refund and fees pages visible through the homepage footer, with mutually consistent business information.
+- Preserve n8n as SEO worker scheduler, the existing deterministic guide-CREATE boundary, and the existing VPS-based CI workflow; no duplicate scheduler or alternate CMS.
+- Old root `styles.css` and `script.js` remain for legacy SEO pages. Approved new-home assets are namespaced under `/site-v2/`.
+- No catch-all rewrite/proxy to the historical Vercel deployment.
 
-Automated SEO/AEO work must not replace, rebuild, restyle, reorder or remove the Meet DUKE homepage implementation without explicit approval.
+## Release policy
 
-The following are locked:
+Production requires: approved source review; new V2 guard and SEO audit passing; VPS desktop/mobile EN/ZH/MS browser evidence; 17 media paths playable; contact conversion event verification; indexed URL preservation; checked authority-emblem use; rollback identity; deployed site readback. No green assertion from a static ZIP alone.
 
-- Meet DUKE section markup and section order.
-- DUKE hero/photo/frame proportions.
-- Six DUKE video cards and their responsive grid.
-- DUKE video modal/player behavior.
-- DUKE thumbnails and video asset paths.
-- Meet DUKE CSS classes including `.duke-klcc-*`, `.duke-video-*` and related responsive rules.
-- The inline `meet-duke-production-lock` sizing block in `index.html` unless an explicitly approved visual change is being made.
-
-## SEO work allowed
-
-SEO automation may update metadata, canonical tags, structured data, sitemap, robots directives, internal links, refund/fees/legal pages, location pages, service pages, guides and other non-visual SEO content, provided the locked Meet DUKE homepage implementation is preserved.
-
-## Mandatory compliance pages
-
-The SEO system must keep these live, indexable and internally linked:
-
-- `/refund-policy/`
-- `/fees-payment-replacement-policy/`
-- `/licence-company-verification/`
-- `/contact-ready-maid/`
-- `/domestic-helper-faq/`
-
-`/refund-policy/` and `/fees-payment-replacement-policy/` must remain present in `sitemap.xml` and visible from the homepage footer.
-
-## Vercel rule
-
-`vercel.json` is for headers, CSP and approved redirects only. It must not contain a catch-all rewrite to an old deployment. Meet DUKE video media from the reference deployment must remain permitted by CSP while those asset URLs are in use.
-
-Any future production baseline change requires explicit approval and visual QA before deployment.
+Protected V2 file hashes are recorded in `config/meet-duke-baseline.json` (the old path is retained solely so the existing release gate can reuse its configuration filename). A baseline change must follow owner-approved visual QA and normal protected-code review.

@@ -1,25 +1,38 @@
 {
-  "version": 2,
-  "approvedAt": "2026-10-03",
-  "sourceCommit": "714ad1334e22d192a3a9c0ba0f63f23af55b9478",
-  "referenceDeployment": null,
+  "version": 3,
+  "approvedAt": "2026-11-22",
+  "sourceCommit": "fd8aba925e08e5b9091e266bf7198d2a83375a92",
+  "source": "Owner-confirmed approved three-section Readymaid homepage",
   "hashAlgorithm": "sha256",
   "hashes": {
-    "meetDukeStyle": "2349588f6b17e291a935a6e154d6654a6e84eb1d882bc5cdebd7be538a949bdd",
-    "meetDukeSection": "9c48f1696bdd35fc3cf35160a49c3ecbd511672dd0a7b95f4b3d759ea663dde0",
-    "scriptJs": "60d161047616601b17b764ebdb5613fc5a7d2372357cf835ea21803dceef79db"
+    "index.html": "cbd3270dd05532ac091f332a8e4073896d1691b9dedbe1755de38b732a006562",
+    "script.js": "095798366030ca75d9f37e7a7e7f01bc9eb97b2bf5888bfcbcc57d51e8f984c8",
+    "site-v2/styles.css": "75c370cc694ae08d912809f11868feab646a4cc6807bea8fa73b1e90aa3c1413",
+    "site-v2/footer-precision.css": "a90602881bd9a809e8b6086f3a51cc77783165a74d1c14ce67486562ed01e921",
+    "site-v2/video-showcase.css": "6f64e442480c229276569a554e6ba58298def3cef2bb3da115c8f85445097e91",
+    "site-v2/video-showcase.js": "38617d9772115eb6b19943665111868f134cc8ef9fcb186de605ba7fbd9d1d70",
+    "site-v2/site-language.js": "664613134104b1a59d134da931e4809b870d4c156c378dc68f8fccb948e17171",
+    "site-v2/assets/readymaid-logo.png": "0d28aec608b73e4980502b4687562037598fea3bee2333beb3667b894bec9e31",
+    "site-v2/seo-integration.css": "906f0957cba75bd975eee38bce69a9df548b70a062f60b577c9e16f8daa6ebf6",
+    "site-v2/analytics.js": "b5b30d3c467975d738c2d2f5bc7a261bd421ade127b43517ea88c313d99645c5"
   },
-  "expected": {
-    "videoCards": 7,
-    "videoSources": 7,
-    "videoFiles": [
-      "clear-instructions.mp4",
-      "interview-process.mp4",
-      "right-match.mp4",
-      "realistic-expectations.mp4",
-      "consistent-instructions.mp4",
-      "match-real-needs.mp4",
-      "licensed-agency.mp4"
-    ]
-  }
+  "mediaFiles": [
+    "site-v2/assets/customer-interview-original.mp4",
+    "site-v2/assets/real-training-clip.mp4",
+    "site-v2/assets/video-stories/clip_01.mp4",
+    "site-v2/assets/video-stories/clip_02.mp4",
+    "site-v2/assets/video-stories/clip_03.mp4",
+    "site-v2/assets/video-stories/clip_05.mp4",
+    "site-v2/assets/video-stories/clip_07.mp4",
+    "site-v2/assets/video-stories/clip_08.mp4",
+    "site-v2/assets/video-stories/clip_09.mp4",
+    "site-v2/assets/video-stories/clip_10.mp4",
+    "site-v2/assets/video-stories/clip_11.mp4",
+    "site-v2/assets/video-stories/clip_12.mp4",
+    "site-v2/assets/video-stories/clip_13.mp4",
+    "site-v2/assets/video-stories/clip_14.mp4",
+    "site-v2/assets/video-stories/clip_15.mp4",
+    "site-v2/assets/video-stories/clip_16.mp4",
+    "site-v2/assets/video-stories/clip_17.mp4"
+  ]
 }

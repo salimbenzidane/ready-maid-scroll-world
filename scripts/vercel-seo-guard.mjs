@@ -1,105 +1,58 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-
-const mode = process.argv.includes('--ci') ? 'ci' : process.argv.includes('--self-test') ? 'self-test' : 'vercel';
-const baseline = JSON.parse(fs.readFileSync('config/meet-duke-baseline.json', 'utf8'));
-
-const sha256 = (value) => crypto.createHash('sha256').update(value, 'utf8').digest('hex');
-
-const readRequired = (path) => {
-  if (!fs.existsSync(path)) throw new Error(`missing required file: ${path}`);
-  return fs.readFileSync(path, 'utf8');
-};
-
-const extractBlock = (text, startMarker, endMarker, label) => {
-  const start = text.indexOf(startMarker);
-  if (start < 0) throw new Error(`missing ${label} start marker`);
-  const endStart = text.indexOf(endMarker, start);
-  if (endStart < 0) throw new Error(`missing ${label} end marker`);
-  return text.slice(start, endStart + endMarker.length);
-};
-
-const extractDukeSection = (index) => {
-  const match = index.match(/<section[^>]*id="duke"[^>]*>/);
-  if (!match || match.index === undefined) throw new Error('missing Meet DUKE section');
-  const end = index.indexOf('</section>', match.index);
-  if (end < 0) throw new Error('missing Meet DUKE section closing tag');
-  return index.slice(match.index, end + '</section>'.length);
-};
-
-export const validateMeetDuke = ({ index, script, sitemap, refund, fees }) => {
-  const errors = [];
-  const capture = (fn) => {
-    try { fn(); } catch (error) { errors.push(error.message); }
-  };
-
-  capture(() => {
-    const style = extractBlock(index, '<style id="meet-duke-production-lock">', '</style>', 'Meet DUKE style');
-    if (sha256(style) !== baseline.hashes.meetDukeStyle) errors.push('Meet DUKE protected style hash changed');
-  });
-
-  capture(() => {
-    const section = extractDukeSection(index);
-    if (sha256(section) !== baseline.hashes.meetDukeSection) errors.push('Meet DUKE protected DOM hash changed');
-    const cards = (section.match(/class="duke-video-card"/g) || []).length;
-    const sources = (section.match(/data-video-src=/g) || []).length;
-    if (cards !== baseline.expected.videoCards) errors.push(`expected ${baseline.expected.videoCards} Meet DUKE cards; found ${cards}`);
-    if (sources !== baseline.expected.videoSources) errors.push(`expected ${baseline.expected.videoSources} Meet DUKE sources; found ${sources}`);
-    for (const file of baseline.expected.videoFiles) {
-      if (!section.includes(file)) errors.push(`missing protected Meet DUKE video: ${file}`);
-    }
-  });
-
-  if (sha256(script) !== baseline.hashes.scriptJs) errors.push('protected script.js hash changed');
-
-  if (!refund.includes('Refund &amp; Cancellation Policy') && !refund.includes('Refund & Cancellation Policy')) {
-    errors.push('refund-policy page lost the approved heading');
-  }
-  if (!fees.includes('RM15,500')) errors.push('fees policy lost Standard Package RM15,500');
-  for (const url of [
-    'https://readymaid.my/refund-policy/',
-    'https://readymaid.my/fees-payment-replacement-policy/'
-  ]) {
-    if (!sitemap.includes(url)) errors.push(`sitemap missing required URL: ${url}`);
-  }
-  const sitemapCount = (sitemap.match(/<url>/g) || []).length;
-  if (sitemapCount < 27) errors.push(`sitemap regressed below 27 URLs; found ${sitemapCount}`);
-
-  return errors;
-};
-
-const files = {
-  index: readRequired('index.html'),
-  script: readRequired('script.js'),
-  sitemap: readRequired('sitemap.xml'),
-  refund: readRequired('refund-policy/index.html'),
-  fees: readRequired('fees-payment-replacement-policy/index.html')
-};
-
-if (mode === 'self-test') {
-  const cases = [
-    ['style mutation', { ...files, index: files.index.replace('margin-top:16px', 'margin-top:17px') }],
-    ['DOM mutation', { ...files, index: files.index.replace('class="duke-video-card"', 'class="duke-video-card-removed"') }],
-    ['script mutation', { ...files, script: files.script.replace('MEET DUKE', 'MEET DUKE REMOVED') }],
-    ['video mutation', { ...files, index: files.index.replace('clear-instructions.mp4', 'missing-video.mp4') }]
-  ];
-  const missed = cases.filter(([, mutated]) => validateMeetDuke(mutated).length === 0).map(([name]) => name);
-  if (missed.length) {
-    console.error(`Meet DUKE guard self-test FAILED: ${missed.join(', ')} was not blocked`);
-    process.exit(1);
-  }
-  console.log(`Meet DUKE guard self-test PASS — ${cases.length} injected regressions blocked.`);
-  process.exit(0);
+const mode=process.argv.includes('--ci')?'ci':process.argv.includes('--self-test')?'self-test':'vercel';
+const sha256=v=>crypto.createHash('sha256').update(v).digest('hex');
+const config=JSON.parse(fs.readFileSync('config/meet-duke-baseline.json','utf8'));
+const read=(file,overrides)=>Object.prototype.hasOwnProperty.call(overrides,file)?Buffer.from(overrides[file]):fs.readFileSync(file);
+function validate(overrides={}){
+ const errors=[];
+ if(config.version!==3)errors.push('V2 baseline version must be 3');
+ for(const [file,expected] of Object.entries(config.hashes||{})){
+  try{if(sha256(read(file,overrides))!==expected)errors.push('Protected V2 file changed: '+file)}
+  catch(e){errors.push('Missing protected V2 file: '+file)}
+ }
+ for(const file of config.mediaFiles||[]){
+  try{if(fs.statSync(file).size<1000)errors.push('Empty/broken media: '+file)}catch(e){errors.push('Missing media: '+file)}
+ }
+ let index='',sitemap='',fees='',refund='',script='';
+ try{index=read('index.html',overrides).toString('utf8')}catch{}
+ try{sitemap=read('sitemap.xml',overrides).toString('utf8')}catch{}
+ try{fees=read('fees-payment-replacement-policy/index.html',overrides).toString('utf8')}catch{}
+ try{refund=read('refund-policy/index.html',overrides).toString('utf8')}catch{}
+ try{script=read('script.js',overrides).toString('utf8')}catch{}
+ if(!index.includes('site-v2/assets/readymaid-logo.png'))errors.push('Approved V2 brand logo missing');
+ if(!index.includes('Maid runaway only.'))errors.push('Approved V2 warranty wording missing');
+ if(!index.includes('JTKSM 432')||!index.includes('30 Nov 2028'))errors.push('Approved Licence C missing');
+ if(!index.includes('https://readymaid.my/'))errors.push('Canonical production host missing');
+ if(!/<link[^>]*rel="canonical"[^>]*href="https:\/\/readymaid\.my\/"/.test(index))errors.push('Homepage canonical missing');
+ if(!/<meta[^>]*content="index,follow,max-image-preview:large"[^>]*name="robots"/.test(index)&&!/<meta[^>]*name="robots"[^>]*content="index,follow,max-image-preview:large"/.test(index))errors.push('Homepage must be indexable');
+ if((index.match(/<h1(?:\s|>)/gi)||[]).length!==1)errors.push('Homepage requires exactly one H1');
+ if(!index.includes('application/ld+json'))errors.push('Homepage missing agency schema');
+ if(!index.includes('site-v2/analytics.js'))errors.push('Homepage GA4 integration missing');
+ if(!index.includes('601115556666'))errors.push('Approved WhatsApp number missing');
+ if(!script.includes('601115556666')||script.includes('60123790677'))errors.push('Legacy analytics does not track approved number');
+ for(const path of ['refund-policy','fees-payment-replacement-policy','licence-company-verification','contact-ready-maid','domestic-helper-faq']){
+  if(!index.includes('/'+path+'/'))errors.push('Homepage missing required SEO footer link: '+path);
+  if(!sitemap.includes('https://readymaid.my/'+path+'/'))errors.push('Sitemap missing required compliance URL: '+path);
+ }
+ if((sitemap.match(/<url>/g)||[]).length<47)errors.push('Sitemap dropped below 47 existing URLs');
+ if(!fees.includes('RM15,500'))errors.push('Approved package missing from fees page');
+ if(!fees.includes('Maid runaway only.')||!refund.includes('Maid runaway only.'))errors.push('Legacy policy pages not aligned with new FAQ');
+ if(index.includes('noindex,nofollow'))errors.push('Private noindex leaked to production');
+ return errors;
 }
-
-const errors = validateMeetDuke(files);
-if (errors.length) {
-  console.error('SEO DEPLOYMENT BLOCKED:');
-  for (const error of errors) console.error(`- ${error}`);
-  // CI uses conventional exit codes. Vercel ignoreCommand uses exit 0 to skip.
-  process.exit(mode === 'ci' ? 1 : 0);
+if(mode==='self-test'){
+ const cases=[
+  ['contact mutation',{'index.html':fs.readFileSync('index.html','utf8').replace('601115556666','60123790677')}],
+  ['warranty mutation',{'index.html':fs.readFileSync('index.html','utf8').replace('Maid runaway only.','All replacements covered.')}],
+  ['script mutation',{'script.js':fs.readFileSync('script.js','utf8').replace('601115556666','60123790677')}],
+  ['branding mutation',{'index.html':fs.readFileSync('index.html','utf8').replace('site-v2/assets/readymaid-logo.png','/assets/not-approved.png')}]
+ ];
+ const misses=cases.filter(([name,p])=>validate(p).length===0).map(([name])=>name);
+ if(misses.length){console.error('V2 guard self-test FAILED: '+misses.join(','));process.exit(1)}
+ console.log('V2 guard self-test PASS: '+cases.length+' protected mutations blocked');process.exit(0);
 }
-
-console.log('SEO deployment guard PASS — cryptographic Meet DUKE baseline preserved.');
-// CI uses conventional exit codes. Vercel ignoreCommand uses exit 1 to continue.
-process.exit(mode === 'ci' ? 0 : 1);
+const errors=validate();
+if(errors.length){console.error('READYMAID V2 DEPLOYMENT BLOCKED:\n'+errors.map(x=>'- '+x).join('\n'));process.exit(mode==='ci'?1:0)}
+console.log('Readymaid V2 production-source integrity PASS: approved homepage, SEO links, policies and media');
+process.exit(mode==='ci'?0:1);

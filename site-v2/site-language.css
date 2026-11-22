@@ -1,0 +1,390 @@
+/* Three visible language choices in the site header; Section 2/player remain unchanged. */
+.site-header-language.site-header-language-desktop,
+.site-header-language.site-header-language-mobile {
+  display:inline-flex; align-items:center; flex:none; gap:3px; height:46px;
+  border:1px solid #dce8fa; border-radius:999px; padding:4px 5px;
+  background:#f6faff; box-shadow:0 3px 12px rgba(17,48,108,.07);
+  color:#183260; white-space:nowrap;
+}
+.site-header-language.site-header-language-desktop::after,
+.site-header-language.site-header-language-mobile::after { content:none; display:none; }
+.site-header-language .site-language-globe { display:inline-flex; align-items:center; justify-content:center; padding:0 5px; }
+.site-header-language .site-language-globe svg { display:block; width:17px; height:17px; color:#2b82c7; }
+.site-header-language button[data-guide-language] {
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:38px; min-height:35px; border:1px solid transparent;
+  border-radius:999px; background:transparent; padding:7px 11px;
+  color:#3a547b; font:750 12px/1.1 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  letter-spacing:0; cursor:pointer; transition:background .16s ease, box-shadow .16s ease, color .16s ease;
+}
+.site-header-language button[data-guide-language]:hover:not(.is-active) { background:#e5f0ff; color:#123c7c; }
+.site-header-language button[data-guide-language].is-active,
+.site-header-language button[data-guide-language][aria-pressed="true"] {
+  color:#fff; border-color:#1b77ca; background:linear-gradient(125deg,#06a5d8,#3968d8 55%,#8138d0);
+  box-shadow:0 3px 9px rgba(33,94,174,.22); font-weight:800;
+}
+.site-header-language button[data-guide-language]:focus-visible {outline:3px solid #36d3eb;outline-offset:2px;}
+.site-header-language.site-header-language-mobile { display:none; }
+.header-actions{gap:clamp(9px,1.1vw,16px);}
+@media(min-width:1181px) and (max-width:1540px){.header-nav{display:none}.menu-button{display:grid}}
+/* On smaller screens the same three choices remain visible in a second header row. */
+@media(max-width:800px){
+  .masthead{height:auto;min-height:92px;}
+  .masthead-row{height:76px;min-height:76px;}
+  .site-header-language.site-header-language-desktop{display:none;}
+  .site-header-language.site-header-language-mobile{
+    display:flex; width:min(100%,420px); min-height:45px; height:auto;
+    margin:0 auto; padding:4px; justify-content:center;
+    border-radius:12px; border-color:#e1eaf7;
+    box-shadow:none; background:#f8fbff;
+  }
+  .site-header-language.site-header-language-mobile button[data-guide-language]{
+    flex:1 1 auto; min-width:0; min-height:35px; padding:7px 10px; font-size:13px;
+  }
+  .masthead > .site-header-language-mobile{margin-top:0;margin-bottom:7px;}
+  .quick-language-choice{display:none;}
+}
+@media(max-width:360px){
+  .site-header-language.site-header-language-mobile{width:calc(100% - 16px);}
+  .site-header-language.site-header-language-mobile button[data-guide-language]{font-size:12px;padding:6px 7px;}
+  .site-header-language.site-header-language-mobile .site-language-globe{padding:0 2px;}
+}
+@media(min-width:801px) and (max-width:980px){
+  .site-header-language.site-header-language-desktop button[data-guide-language]{padding-inline:8px;}
+  .site-header-language .site-language-globe{padding-inline:2px;}
+}
+/* Original site uses a purely visual pseudo-caption on the three service cards. */
+html[lang="zh-CN"] .fa-locked-needs .fa-locked-need strong::after{content:"WhatsApp 咨询";letter-spacing:0;}
+html[lang="ms-MY"] .fa-locked-needs .fa-locked-need strong::after{content:"Tanya di WhatsApp";letter-spacing:.02em;}
+/* Malay service labels may wrap naturally inside the flex text column;
+   prevent the right-hand WhatsApp action icon from covering the title. */
+html[lang="ms-MY"] .fa-locked-needs .fa-locked-need strong{
+  min-width:0;
+  flex:1 1 0;
+  white-space:normal;
+  overflow-wrap:break-word;
+  word-break:normal;
+  letter-spacing:-.055em;
+}
+@media (min-width:1181px){
+  html[lang="ms-MY"] .fa-locked-needs .fa-locked-need strong{font-size:clamp(13px,.98vw,16px);line-height:1.06;}
+  html[lang="ms-MY"] .fa-locked-needs .fa-locked-need:nth-child(1) strong{font-size:clamp(12px,.9vw,15px);}
+  html[lang="ms-MY"] .fa-locked-needs .fa-locked-need strong::after{font-size:8.1px;line-height:1.06;letter-spacing:.035em;}
+  html[lang="ms-MY"] .fa-locked-needs .fa-locked-need .fa-need-chevron{width:30px;height:30px;}
+  html[lang="ms-MY"] .fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon{width:19px;height:19px;}
+}
+
+/* Keep hero copy readable in Chinese and Malay without altering the player or cards. */
+html[lang="zh-CN"] .fa-locked-copy{font-family:Inter,"Noto Sans CJK SC","Microsoft YaHei",sans-serif;}
+html[lang="ms-MY"] .fa-locked-copy h1{letter-spacing:-.045em;}
+@media(min-width:801px) and (max-width:1720px){.header-nav{display:none}.menu-button{display:grid}}
+
+
+/* Chinese layout corrections — scoped to zh-CN; keep the approved player and other languages. */
+html[lang="zh-CN"] {
+  --rm-cjk: "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", "Heiti SC", sans-serif;
+  line-break: strict;
+}
+html[lang="zh-CN"] body,
+html[lang="zh-CN"] button,
+html[lang="zh-CN"] a {
+  font-family: var(--rm-cjk);
+}
+html[lang="zh-CN"] .site-frame { overflow-x: clip; }
+html[lang="zh-CN"] main h1,
+html[lang="zh-CN"] main h2,
+html[lang="zh-CN"] main h3,
+html[lang="zh-CN"] main h4,
+html[lang="zh-CN"] .header-nav a {
+  letter-spacing: 0;
+  font-style: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+/* The English headline's two forced unbroken lines and italic font don't suit Chinese. */
+html[lang="zh-CN"] .fa-locked-copy { min-width: 0; }
+html[lang="zh-CN"] .fa-locked-copy h1 {
+  position: relative;
+  z-index: 1;
+  font-family: var(--rm-cjk);
+  font-weight: 850;
+  font-size: clamp(36px, 3.45vw, 60px);
+  line-height: 1.24;
+  letter-spacing: 0;
+  font-style: normal;
+  max-width: 100%;
+  text-wrap: pretty;
+}
+html[lang="zh-CN"] .fa-locked-copy h1 span,
+html[lang="zh-CN"] .fa-locked-copy h1 em {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  font-style: normal;
+}
+html[lang="zh-CN"] .fa-locked-eyebrow {
+  letter-spacing: .055em;
+  line-height: 1.48;
+  font-style: normal;
+}
+html[lang="zh-CN"] .fa-locked-intro {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+html[lang="zh-CN"] .fa-locked-need strong {
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 1.4;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+html[lang="zh-CN"] .fa-locked-proof-head { min-height: 0; height: auto; }
+html[lang="zh-CN"] .fa-locked-proof-head h2 {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+  letter-spacing: 0;
+  font-style: normal;
+}
+html[lang="zh-CN"] .fa-gallery-item>span b,
+html[lang="zh-CN"] .fa-gallery-item>span small {
+  letter-spacing: 0;
+  line-height: 1.32;
+  overflow-wrap: anywhere;
+}
+html[lang="zh-CN"] .fa-offer-package,
+html[lang="zh-CN"] .fa-offer-warranty,
+html[lang="zh-CN"] .fa-offer-terms {
+  font-family: var(--rm-cjk);
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+html[lang="zh-CN"] .fa-offer-terms { line-height: 1.55; overflow-wrap: anywhere; }
+html[lang="zh-CN"] .fa-trust-item b,
+html[lang="zh-CN"] .fa-trust-item small { letter-spacing: 0; line-height: 1.38; }
+html[lang="zh-CN"] .fa-customer-heading h2 {
+  letter-spacing: 0;
+  font-style: normal;
+  white-space: normal;
+  line-height: 1.26;
+}
+html[lang="zh-CN"] .fa-customer-heading h2 em { font-style: normal; }
+html[lang="zh-CN"] .fa-customer-quote p,
+html[lang="zh-CN"] .fa-customer-heading p {
+  font-style: normal;
+  line-height: 1.58;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+html[lang="zh-CN"] .fa-customer-facts,
+html[lang="zh-CN"] .fa-customer-video-top { letter-spacing: 0; }
+html[lang="zh-CN"] .process-section h2 { line-height: 1.35; letter-spacing: 0; }
+html[lang="zh-CN"] .steps strong,
+html[lang="zh-CN"] .steps p { letter-spacing: 0; line-height: 1.6; overflow-wrap: anywhere; }
+html[lang="zh-CN"] .footer-content,
+html[lang="zh-CN"] .wa-action { letter-spacing: 0; overflow-wrap: anywhere; }
+html[lang="zh-CN"] .wa-action span,
+html[lang="zh-CN"] .wa-action strong { line-height: 1.35; }
+
+/* Make the Chinese right-hand guide read like a library, not compressed English labels. */
+html[lang="zh-CN"] .rm-video-section,
+html[lang="zh-CN"] .rm-video-section button { font-family: var(--rm-cjk); }
+html[lang="zh-CN"] .rm-video-section h2,
+html[lang="zh-CN"] .rm-video-section h3,
+html[lang="zh-CN"] .rm-video-section h4,
+html[lang="zh-CN"] .rm-video-section p,
+html[lang="zh-CN"] .rm-video-section strong,
+html[lang="zh-CN"] .rm-video-section small,
+html[lang="zh-CN"] .rm-video-section span { letter-spacing: 0; }
+html[lang="zh-CN"] .rm-video-intro h2 { line-height: 1.3; }
+html[lang="zh-CN"] .rm-video-intro p { line-height: 1.65; }
+html[lang="zh-CN"] .rm-video-library-head h3 { line-height: 1.4; }
+html[lang="zh-CN"] .rm-video-library-head p,
+html[lang="zh-CN"] .rm-video-category-summary { line-height: 1.65; }
+html[lang="zh-CN"] .rm-video-library .rm-video-topic {
+  height: auto;
+  min-height: 76px;
+  align-items: center;
+}
+html[lang="zh-CN"] .rm-topic-copy { min-width: 0; }
+html[lang="zh-CN"] .rm-video-topic-name {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.48;
+  font-weight: 740;
+}
+html[lang="zh-CN"] .rm-topic-copy small { line-height: 1.4; }
+html[lang="zh-CN"] .rm-video-episodes-heading { align-items: flex-start; }
+html[lang="zh-CN"] .rm-video-episodes-heading h3 { min-width: 0; line-height: 1.4; }
+html[lang="zh-CN"] .rm-video-episodes-heading>span { flex: none; padding-top: 4px; }
+html[lang="zh-CN"] .rm-video-episode { height: auto; min-height: 78px; }
+html[lang="zh-CN"] .rm-video-episode-copy strong {
+  line-height: 1.45;
+  -webkit-line-clamp: 2;
+  overflow-wrap: anywhere;
+}
+html[lang="zh-CN"] .rm-video-episode-copy small {
+  line-height: 1.5;
+  -webkit-line-clamp: 2;
+  overflow-wrap: anywhere;
+}
+html[lang="zh-CN"] .rm-video-current .rm-video-benefit,
+html[lang="zh-CN"] .rm-video-scope-note { line-height: 1.65; }
+
+/* At wide desktop sizes, avoid the extra collapsed-navigation breakpoint. */
+@media (min-width: 1620px) and (max-width: 1720px) {
+  html[lang="zh-CN"] .masthead-row.wrap { gap: 12px; }
+  html[lang="zh-CN"] .brand-lockup { width: 250px; }
+  html[lang="zh-CN"] .header-nav { display:flex; gap: 17px; margin:0 auto 0 15px; }
+  html[lang="zh-CN"] .header-nav a { font-size: 15px; }
+  html[lang="zh-CN"] .menu-button { display: none; }
+  html[lang="zh-CN"] .wa-header { min-width: 237px; font-size: 14px; }
+  html[lang="zh-CN"] .header-actions { gap: 10px; }
+}
+@media (min-width: 981px) and (max-width: 1270px) {
+  html[lang="zh-CN"] .rm-video-library .rm-video-topic { min-height: 83px; }
+  html[lang="zh-CN"] .rm-video-topic-name { font-size: 11.5px; }
+  html[lang="zh-CN"] .rm-topic-copy small { font-size: 9.5px; }
+  html[lang="zh-CN"] .rm-video-episode-copy small { -webkit-line-clamp: 2; }
+}
+@media (max-width: 800px) {
+  html[lang="zh-CN"] .fa-locked-copy h1 {
+    font-size: clamp(30px, 6.5vw, 47px);
+    line-height: 1.27;
+  }
+  html[lang="zh-CN"] .fa-locked-intro { font-size: 15px; line-height: 1.58; }
+  html[lang="zh-CN"] .fa-locked-proof-head { gap: 7px; }
+  html[lang="zh-CN"] .fa-locked-proof-head h2 { font-size: clamp(16px, 3vw, 21px); }
+  html[lang="zh-CN"] .fa-proof-underline { display: none; }
+  html[lang="zh-CN"] .fa-gallery-item>span { gap: 4px; }
+  html[lang="zh-CN"] .fa-gallery-item>span small { line-height: 1.4; }
+  html[lang="zh-CN"] .fa-customer-heading h2 { font-size: clamp(19px, 3.5vw, 25px); }
+  html[lang="zh-CN"] .rm-video-library .rm-video-topic { min-height: 74px; }
+  html[lang="zh-CN"] .rm-video-topic-name { font-size: 13px; }
+  html[lang="zh-CN"] .rm-topic-copy small { font-size: 10px; }
+}
+@media (max-width: 600px) {
+  html[lang="zh-CN"] .fa-locked-eyebrow { font-size: 11px; letter-spacing: .03em; }
+  html[lang="zh-CN"] .fa-locked-copy h1 { font-size: clamp(28px, 7.65vw, 37px); line-height: 1.27; }
+  html[lang="zh-CN"] .fa-locked-crane { width: 74px; opacity: .38; z-index: 0; }
+  html[lang="zh-CN"] .fa-locked-copy h1 { position: relative; z-index: 2; }
+  html[lang="zh-CN"] .fa-locked-intro { font-size: 12px; line-height: 1.6; }
+  html[lang="zh-CN"] .fa-locked-need { min-width: 0; min-height: 60px; }
+  html[lang="zh-CN"] .fa-locked-need strong { font-size: clamp(10px, 2.65vw, 12px); }
+  html[lang="zh-CN"] .fa-locked-proof-head h2 { font-size: 17px; }
+  html[lang="zh-CN"] .fa-gallery-item>span b { line-height: 1.35; }
+  html[lang="zh-CN"] .fa-gallery-item>span small { line-height: 1.4; }
+  html[lang="zh-CN"] .fa-offer-package { font-size: clamp(11px, 3.25vw, 14px); }
+  html[lang="zh-CN"] .fa-offer-warranty { font-size: 12px; }
+  html[lang="zh-CN"] .fa-offer-terms { font-size: 10px; line-height: 1.55; }
+  html[lang="zh-CN"] .fa-customer-heading h2 { font-size: 20px; }
+  html[lang="zh-CN"] .process-section h2 { font-size: clamp(25px, 6.3vw, 29px); }
+  html[lang="zh-CN"] .site-header-language-mobile button[data-guide-language] { min-width: 0; }
+  html[lang="zh-CN"] .mobile-bottom .wa-action { white-space: normal; }
+  html[lang="zh-CN"] .rm-video-intro h2 { line-height: 1.35; }
+}
+@media (max-width: 360px) {
+  html[lang="zh-CN"] .brand-lockup { width: 130px; flex: 0 1 130px; }
+  html[lang="zh-CN"] .masthead-row.wrap { margin-left: 25px; margin-right: 9px; }
+  html[lang="zh-CN"] .wa-header { min-width: 41px; width: 41px; min-height: 41px; padding: 7px; }
+  html[lang="zh-CN"] .wa-header span { display: none; }
+  html[lang="zh-CN"] .wa-header svg { flex: none; }
+  html[lang="zh-CN"] .fa-locked-copy h1 { font-size: 27px; }
+  html[lang="zh-CN"] .fa-locked-proof-head h2 { font-size: 15px; }
+}
+
+
+/* Chinese video-guide heading: two deliberate, balanced lines. No other page changes. */
+html[lang="zh-CN"] .rm-video-intro {
+  max-width: 860px;
+}
+html[lang="zh-CN"] .rm-video-intro h2 {
+  max-width: 100%;
+  margin: 14px auto 10px;
+  font-size: clamp(27px, 3.45vw, 44px);
+  line-height: 1.26;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+html[lang="zh-CN"] .rm-video-intro h2 > span[data-i18n="introTitle"] {
+  display: block;
+  max-width: 100%;
+  white-space: normal;
+  text-wrap: balance;
+}
+html[lang="zh-CN"] .rm-video-intro h2 > em[data-i18n="introAccent"] {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 4px auto 0;
+  white-space: normal;
+  font-style: normal;
+  text-wrap: balance;
+}
+@media (max-width: 360px) {
+  html[lang="zh-CN"] .rm-video-intro h2 {
+    font-size: 24px;
+  }
+}
+
+/* Approved customer-interview sound gate. Only displayed after blocked audible autoplay. */
+.fa-customer-video-shell .interview-audio-gate[hidden] { display:none !important; }
+.fa-customer-video-shell .interview-audio-gate {
+  position:absolute; z-index:8; left:50%; bottom:79px; transform:translateX(-50%);
+  width:calc(100% - 33px); max-width:298px;
+  display:flex; flex-direction:column; align-items:center; gap:7px;
+  text-align:center; pointer-events:none;
+}
+.fa-customer-video-shell .interview-audio-gate-button {
+  display:grid; grid-template-columns:40px minmax(0,1fr) 25px;
+  gap:8px; align-items:center; width:100%; min-height:69px; padding:9px 12px;
+  border:2px solid rgba(225,253,255,.97); border-radius:999px; color:#fff;
+  background:linear-gradient(110deg,#07bced 0%,#2564e9 34%,#6944eb 66%,#b01adf 100%);
+  box-shadow:0 0 0 3px rgba(66,197,250,.23),0 8px 20px rgba(2,14,72,.39),
+             0 0 17px rgba(36,214,255,.55),inset 0 2px 3px rgba(255,255,255,.29);
+  font:800 16px/1.16 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  text-align:center; cursor:pointer; pointer-events:auto;
+  transition:filter .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.fa-customer-video-shell .interview-audio-gate-button:hover { filter:brightness(1.08); transform:translateY(-2px); }
+.fa-customer-video-shell .interview-audio-gate-button:focus-visible { outline:3px solid #fff; outline-offset:4px; }
+.fa-customer-video-shell .interview-audio-gate-play {
+  display:grid; place-items:center; width:38px; height:38px; border-radius:50%;
+  background:#fff; color:#1755bf; box-shadow:0 2px 8px rgba(7,26,94,.27);
+}
+.fa-customer-video-shell .interview-audio-gate-play svg { width:19px; height:19px; stroke:currentColor; fill:none; stroke-width:2; }
+.fa-customer-video-shell .interview-audio-gate-label { overflow-wrap:normal; hyphens:none; }
+.fa-customer-video-shell .interview-audio-gate-speaker svg { width:23px; height:23px; stroke:currentColor; fill:none; stroke-width:1.8; }
+.fa-customer-video-shell .interview-audio-gate-hint {
+  width:95%; max-width:260px; padding:4px 8px; margin:0;
+  border-radius:8px; background:rgba(2,13,50,.59); color:#fff;
+  font:700 10px/1.3 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  text-shadow:0 1px 4px rgba(0,0,0,.45);
+}
+.fa-customer-video-shell .portrait-view.needs-sound-gesture .video-center-play,
+.fa-customer-video-shell .portrait-view.needs-sound-gesture #video-sound { display:none; }
+html[lang="zh-CN"] .fa-customer-video-shell .interview-audio-gate-button,
+html[lang="zh-CN"] .fa-customer-video-shell .interview-audio-gate-hint {
+  font-family:"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+}
+@media(max-width:600px) {
+  .fa-customer-video-shell .interview-audio-gate { width:calc(100% - 18px); bottom:55px; gap:4px; }
+  .fa-customer-video-shell .interview-audio-gate-button {
+    grid-template-columns:27px minmax(0,1fr) 17px; gap:4px;
+    min-height:51px; padding:7px; border-width:1.5px;
+    font-size:11px; line-height:1.12;
+  }
+  .fa-customer-video-shell .interview-audio-gate-play { width:26px; height:26px; }
+  .fa-customer-video-shell .interview-audio-gate-play svg { width:15px; height:15px; }
+  .fa-customer-video-shell .interview-audio-gate-speaker svg { width:16px; height:16px; }
+  .fa-customer-video-shell .interview-audio-gate-hint { font-size:8px; line-height:1.19; padding:2px 4px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .fa-customer-video-shell .interview-audio-gate-button { transition:none; }
+}

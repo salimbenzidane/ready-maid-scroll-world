@@ -1,0 +1,513 @@
+/* Readymaid mobile hero service selectors. Only these three links are affected.
+   Compact, single-row origami detailing; no desktop or downstream style changes. */
+.fa-locked-needs .child-icon > svg.mobile-heart { display:none; }
+/* Direct WhatsApp action also on desktop and tablet. Original left-side service
+   icon, labels, card shape, and all other components remain unchanged. */
+@media (min-width:601px) {
+  .fa-locked-needs .fa-locked-need .fa-need-chevron {
+    display:grid;
+    place-items:center;
+    flex:none;
+    width:30px;
+    height:30px;
+    margin-left:auto;
+    border-radius:50%;
+    background:linear-gradient(145deg,#f3fff9,#e2faed);
+    border:1px solid rgba(31,182,111,.18);
+    box-shadow:0 3px 9px rgba(17,120,78,.09),inset 0 1px #fff;
+    font-size:0;
+    line-height:0;
+    color:#06a75b;
+  }
+  .fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon {
+    display:block;
+    width:22px;
+    height:22px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.7;
+  }
+  .fa-locked-needs .fa-locked-need:focus-visible {
+    outline:3px solid #1681df;
+    outline-offset:3px;
+  }
+}
+@media (min-width:601px) and (max-width:1370px) {
+  .fa-locked-needs .fa-locked-need .fa-need-chevron {width:25px;height:25px;}
+  .fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon {width:19px;height:19px;}
+}
+
+@media (max-width:600px) {
+  .fa-locked-needs {
+    gap:6px;
+    margin:2px 0 4px;
+    align-items:stretch;
+  }
+  .fa-locked-needs .fa-locked-need {
+    --tile-a:#12cce9;
+    --tile-b:#3a78eb;
+    --tile-text:#12337b;
+    box-sizing:border-box;
+    position:relative;
+    isolation:isolate;
+    display:grid;
+    grid-template-columns:26px minmax(0,1fr) 15px;
+    align-items:center;
+    column-gap:4px;
+    min-width:0;
+    min-height:58px;
+    height:58px;
+    padding:6px 7px 7px;
+    overflow:hidden;
+    border:1px solid #e5eefa;
+    border-radius:15px;
+    background:linear-gradient(146deg,#ffffff 10%,#f5faff 76%,#f6f3ff 100%);
+    box-shadow:0 5px 13px rgba(27,47,116,.13), inset 0 1px 0 rgba(255,255,255,.98);
+    text-decoration:none;
+    color:#0b215c;
+    -webkit-tap-highlight-color:transparent;
+    transform:translateZ(0);
+    transition:transform .14s ease,box-shadow .14s ease;
+  }
+  .fa-locked-needs .fa-locked-need:nth-child(1) { --tile-a:#20d2e8; --tile-b:#2c8be8; --tile-text:#168ecf; }
+  .fa-locked-needs .fa-locked-need:nth-child(2) { --tile-a:#11c8ef; --tile-b:#3764e6; --tile-text:#089bcf; }
+  .fa-locked-needs .fa-locked-need:nth-child(3) { --tile-a:#5d75ee; --tile-b:#ae35de; --tile-text:#8d3fd3; }
+  /* Refined two-plane origami fold, entirely inside the button. */
+  .fa-locked-needs .fa-locked-need::before {
+    content:"";
+    position:absolute;
+    top:0;right:0;
+    width:27px;height:27px;
+    background:linear-gradient(145deg,var(--tile-a) 5%,var(--tile-b) 78%);
+    clip-path:polygon(17% 0,100% 0,100% 84%);
+    opacity:.82;
+    pointer-events:none;
+  }
+  .fa-locked-needs .fa-locked-need::after {
+    content:"";
+    position:absolute;
+    left:12px;right:13px;bottom:0;
+    height:2.5px;
+    border-radius:20px 20px 0 0;
+    background:linear-gradient(90deg,var(--tile-a),var(--tile-b));
+    opacity:.92;
+    pointer-events:none;
+  }
+  .fa-locked-needs .fa-locked-need .need-icon {
+    position:relative;
+    z-index:1;
+    display:grid;
+    place-items:center;
+    width:26px;height:29px;
+    min-width:0;
+    border:1px solid rgba(214,233,252,.85);
+    border-radius:9px;
+    background:linear-gradient(155deg,#ffffff,#f0f8ff);
+    box-shadow:0 3px 7px rgba(42,86,173,.08);
+    color:var(--tile-text);
+  }
+  .fa-locked-needs .fa-locked-need .need-icon svg {
+    width:20px;height:20px;
+    stroke-width:1.9;
+  }
+  .fa-locked-needs .fa-locked-need strong {
+    position:relative;
+    z-index:1;
+    display:block;
+    min-width:0;
+    font-size:clamp(10px,2.85vw,12.2px);
+    line-height:1.12;
+    letter-spacing:-.047em;
+    font-weight:850;
+    text-wrap:balance;
+    white-space:normal;
+  }
+  .fa-locked-needs .fa-locked-need .fa-need-chevron {
+    position:relative;
+    z-index:1;
+    display:block;
+    display:grid;
+    place-items:center;
+    width:15px;
+    height:15px;
+    font-size:0;
+    line-height:1;
+    margin:0;
+    color:#0aa65b;
+    text-shadow:none;
+  }
+  .fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon {
+    display:block;
+    width:15px;
+    height:15px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.8;
+  }
+  .fa-locked-needs .child-icon > svg.mobile-heart { display:block; }
+  .fa-locked-needs .child-icon > svg:not(.mobile-heart) { display:none; }
+  .fa-locked-needs .fa-locked-need:focus-visible {
+    outline:3px solid #214cce;
+    outline-offset:2px;
+  }
+  .fa-locked-needs .fa-locked-need:active {
+    transform:translateY(1px) scale(.986);
+    box-shadow:0 2px 6px rgba(27,47,116,.17);
+  }
+}
+@media (max-width:355px) {
+  .fa-locked-needs {gap:4px;}
+  .fa-locked-needs .fa-locked-need {
+    grid-template-columns:20px minmax(0,1fr) 12px;
+    column-gap:1px;
+    height:56px;min-height:56px;
+    padding:5px 3px 6px;
+    border-radius:13px;
+  }
+  .fa-locked-needs .fa-locked-need .need-icon {width:20px;height:26px;border-radius:8px;}
+  .fa-locked-needs .fa-locked-need .need-icon svg {width:17px;height:17px;}
+  .fa-locked-needs .fa-locked-need strong {font-size:10.1px;letter-spacing:-.052em;line-height:1.06;}
+  .fa-locked-needs .fa-locked-need .fa-need-chevron {width:12px;height:12px;font-size:0;}
+  .fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon {width:12px;height:12px;}
+  .fa-locked-needs .fa-locked-need::before {width:23px;height:23px;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .fa-locked-needs .fa-locked-need {transition:none;}
+}
+
+/* 2026-11-21: Owner-scoped 3D action buttons ONLY. All content, targets, and
+   components outside the three hero WhatsApp links remain unchanged. */
+.fa-locked-needs .fa-locked-need {
+  --facet-a:#10caec;
+  --facet-b:#3d76e9;
+  --facet-icon:#2476d9;
+  position:relative;
+  isolation:isolate;
+  box-sizing:border-box;
+  overflow:hidden;
+  border:1.5px solid transparent;
+  border-radius:19px;
+  background:
+    linear-gradient(155deg,#ffffff 5%,#f7fbff 42%,#eaf3ff 78%,#f2edff 100%) padding-box,
+    linear-gradient(132deg,#ffffff 5%,#8be5ff 30%,#7f98fa 68%,#b793fc 92%,#ffffff) border-box;
+  box-shadow:
+    0 3px 0 rgba(76,89,177,.19),
+    0 12px 20px rgba(31,56,134,.19),
+    inset 0 2px 1px rgba(255,255,255,.99),
+    inset 0 -3px 7px rgba(89,111,204,.07);
+  color:#091d59;
+  text-decoration:none;
+  transform:translateZ(0);
+  transition:transform .18s cubic-bezier(.2,.7,.25,1),box-shadow .18s ease,filter .18s ease;
+}
+.fa-locked-needs .fa-locked-need:nth-child(1) {--facet-a:#0fd7ed;--facet-b:#367bea;--facet-icon:#2e83df;}
+.fa-locked-needs .fa-locked-need:nth-child(2) {--facet-a:#00bde9;--facet-b:#365ef1;--facet-icon:#03a4da;}
+.fa-locked-needs .fa-locked-need:nth-child(3) {--facet-a:#596cf1;--facet-b:#a33ce5;--facet-icon:#863bd9;}
+.fa-locked-needs .fa-locked-need::before {
+  content:"";
+  position:absolute;
+  z-index:0;
+  top:0;
+  left:0;
+  width:40px;
+  height:28px;
+  background:linear-gradient(144deg,var(--facet-a) 0 44%,var(--facet-b) 45% 100%);
+  clip-path:polygon(0 0,100% 0,0 100%);
+  opacity:.78;
+  pointer-events:none;
+}
+.fa-locked-needs .fa-locked-need::after {
+  content:"";
+  position:absolute;
+  z-index:0;
+  top:0;
+  right:0;
+  bottom:auto;
+  left:auto;
+  width:31px;
+  height:27px;
+  border-radius:0;
+  background:linear-gradient(148deg,rgba(255,255,255,.87),var(--facet-b));
+  clip-path:polygon(32% 0,100% 0,100% 95%);
+  opacity:.38;
+  pointer-events:none;
+}
+.fa-locked-needs .fa-locked-need .need-icon {
+  position:relative;
+  z-index:1;
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:47px;
+  height:46px;
+  border:1px solid rgba(255,255,255,.94);
+  border-radius:14px;
+  background:linear-gradient(155deg,#ffffff 0%,#f1fbff 47%,#dceeff 100%);
+  box-shadow:
+    0 3px 0 rgba(78,129,199,.13),
+    0 6px 12px rgba(34,75,162,.13),
+    inset 0 2px 0 rgba(255,255,255,.98),
+    inset 0 -2px 5px rgba(79,128,213,.10);
+  color:var(--facet-icon);
+}
+.fa-locked-needs .fa-locked-need .need-icon svg {
+  width:28px;
+  height:28px;
+  stroke-width:1.9;
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.7));
+}
+.fa-locked-needs .fa-locked-need strong {
+  position:relative;
+  z-index:1;
+  display:block;
+  flex:1 1 auto;
+  min-width:0;
+  font-weight:880;
+  letter-spacing:-.045em;
+  line-height:1.09;
+}
+@media(min-width:1181px) {
+  .fa-locked-needs .fa-locked-need strong::after {
+    content:"WHATSAPP ENQUIRY";
+    display:block;
+    margin-top:4px;
+    color:#5273a7;
+    font-size:9px;
+    line-height:1.1;
+    letter-spacing:.095em;
+    font-weight:790;
+  }
+}
+.fa-locked-needs .fa-locked-need .fa-need-chevron {
+  position:relative;
+  z-index:1;
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:32px;
+  height:32px;
+  margin-left:auto;
+  border:1px solid rgba(225,255,236,.93);
+  border-radius:50%;
+  background:radial-gradient(circle at 28% 22%,#b0ffce 0%,#21df77 28%,#00b65b 64%,#008f4f 100%);
+  box-shadow:
+    0 2px 0 #08733d,
+    0 5px 10px rgba(2,128,65,.22),
+    inset 0 2px 1px rgba(255,255,255,.64),
+    inset 0 -3px 5px rgba(0,84,36,.19);
+  color:white;
+  font-size:0;
+  line-height:0;
+  text-shadow:none;
+}
+.fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon {
+  display:block;
+  width:21px;
+  height:21px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.75;
+  filter:drop-shadow(0 1px 1px rgba(0,90,36,.26));
+}
+.fa-locked-needs .child-icon > svg.mobile-heart {display:block;}
+.fa-locked-needs .child-icon > svg:not(.mobile-heart) {display:none;}
+.fa-locked-needs .fa-locked-need:hover {
+  transform:translateY(-3px);
+  box-shadow:
+    0 5px 0 rgba(69,84,180,.19),
+    0 17px 26px rgba(32,60,151,.23),
+    0 0 18px rgba(66,165,237,.10),
+    inset 0 2px 1px #fff;
+}
+.fa-locked-needs .fa-locked-need:active {
+  transform:translateY(2px);
+  box-shadow:0 1px 0 rgba(69,84,180,.2),0 3px 8px rgba(31,56,134,.15),inset 0 2px 5px rgba(55,95,175,.10);
+}
+.fa-locked-needs .fa-locked-need:focus-visible {
+  outline:3px solid #2b8ef0;
+  outline-offset:3px;
+}
+@media (min-width:601px) and (max-width:1370px) {
+  .fa-locked-needs .fa-locked-need .need-icon {width:38px;height:42px;border-radius:12px;}
+  .fa-locked-needs .fa-locked-need .need-icon svg {width:24px;height:24px;}
+  .fa-locked-needs .fa-locked-need .fa-need-chevron {width:28px;height:28px;}
+  .fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon {width:18px;height:18px;}
+}
+@media (max-width:600px) {
+  .fa-locked-needs .fa-locked-need {
+    /* Maintain the approved low, flat footprint, with dimensional surfaces. */
+    border-radius:14px;
+    border-width:1px;
+    background:
+      linear-gradient(150deg,#fff 0%,#f7fcff 43%,#e9f3ff 100%) padding-box,
+      linear-gradient(145deg,#fff 5%,var(--facet-a) 46%,var(--facet-b) 100%) border-box;
+    box-shadow:0 3px 0 rgba(72,96,181,.21),0 5px 10px rgba(23,55,131,.13),inset 0 2px 0 #fff,inset 0 -2px 5px rgba(83,122,210,.07);
+    grid-template-columns:26px minmax(0,1fr) 21px;
+    column-gap:3px;
+  }
+  .fa-locked-needs .fa-locked-need::before {
+    top:0;right:0;left:auto;width:26px;height:25px;
+    clip-path:polygon(22% 0,100% 0,100% 83%);
+    opacity:.55;
+  }
+  .fa-locked-needs .fa-locked-need::after {
+    left:12px;right:12px;top:auto;bottom:0;
+    width:auto;height:3px;border-radius:6px 6px 0 0;
+    clip-path:none;
+    background:linear-gradient(90deg,var(--facet-a),var(--facet-b));
+    opacity:.86;
+  }
+  .fa-locked-needs .fa-locked-need .need-icon {
+    width:26px;height:29px;border-radius:9px;
+    box-shadow:0 2px 0 rgba(73,117,189,.12),0 3px 7px rgba(36,75,154,.10),inset 0 1px 0 #fff;
+  }
+  .fa-locked-needs .fa-locked-need .need-icon svg {width:19px;height:19px;}
+  .fa-locked-needs .fa-locked-need strong {font-size:clamp(10px,2.85vw,12.2px);line-height:1.12;}
+  .fa-locked-needs .fa-locked-need strong::after {content:none;}
+  .fa-locked-needs .fa-locked-need .fa-need-chevron {
+    width:21px;height:21px;margin:0;border:1px solid rgba(229,255,238,.96);
+    box-shadow:0 1px 0 #08733d,0 3px 6px rgba(2,128,65,.22),inset 0 1px rgba(255,255,255,.55);
+  }
+  .fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon {width:14px;height:14px;stroke-width:1.9;}
+  .fa-locked-needs .fa-locked-need:active {transform:translateY(1px);}
+}
+@media (max-width:355px) {
+  .fa-locked-needs .fa-locked-need {grid-template-columns:18px minmax(0,1fr) 17px;column-gap:1px;}
+  .fa-locked-needs .fa-locked-need .need-icon {width:18px;height:26px;border-radius:7px;}
+  .fa-locked-needs .fa-locked-need .need-icon svg {width:16px;height:16px;}
+  .fa-locked-needs .fa-locked-need .fa-need-chevron {width:17px;height:18px;}
+  .fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon {width:12px;height:12px;}
+  .fa-locked-needs .fa-locked-need strong {font-size:10.1px;}
+  .fa-locked-needs .fa-locked-need:nth-child(2) strong {font-size:9.3px;letter-spacing:-.06em;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .fa-locked-needs .fa-locked-need {transition:none;}
+}
+
+/* 2026-11-21: centre ONLY the desktop service button row between the intro
+   and Real Moments heading. Visual offset preserves every surrounding box. */
+@media (min-width:1181px) {
+  .fa-locked-needs { transform:translateY(10.5px); }
+}
+@media (min-width:1640px) and (max-width:1799px) {
+  .fa-locked-needs { transform:translateY(14px); }
+}
+
+/* FA detail polish, 2026-11-21: ONLY the three service WhatsApp buttons.
+   Preserve size, location, link destinations, original spacing and all page content. */
+.fa-locked-needs .fa-locked-need {
+  border-color:transparent;
+  background:
+    linear-gradient(156deg,#fff 0%,#fdfefe 24%,#f0f8ff 67%,#edefff 100%) padding-box,
+    linear-gradient(128deg,#f2ffff 0%,#58d8f0 26%,#92abfa 64%,#b07af4 96%) border-box;
+  box-shadow:
+    0 2px 0 rgba(77,99,187,.15),
+    0 10px 20px rgba(23,44,111,.13),
+    0 20px 30px -17px rgba(42,63,146,.23),
+    inset 0 1.5px 0 rgba(255,255,255,1),
+    inset 0 -2px 3px rgba(84,102,183,.08);
+}
+.fa-locked-needs .fa-locked-need::before {
+  background:linear-gradient(135deg,var(--facet-a) 0 44%,#f0ffff 45% 53%,var(--facet-b) 54% 100%);
+  opacity:.86;
+}
+.fa-locked-needs .fa-locked-need::after {
+  background:linear-gradient(137deg,rgba(255,255,255,.94),var(--facet-b));
+  opacity:.3;
+}
+.fa-locked-needs .fa-locked-need .need-icon {
+  background:linear-gradient(152deg,#fff 0%,#f6fcff 43%,#e6f3ff 100%);
+  border-color:rgba(255,255,255,.99);
+  box-shadow:
+    0 1px 0 rgba(71,145,206,.15),
+    0 4px 9px rgba(40,73,146,.13),
+    inset 0 2px 1px #fff,
+    inset 0 -2px 3px rgba(73,127,201,.12);
+}
+.fa-locked-needs .fa-locked-need .need-icon svg {
+  stroke-width:2;
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.9));
+}
+.fa-locked-needs .fa-locked-need strong {
+  letter-spacing:-.045em;
+  color:#0a205e;
+  text-shadow:0 1px 0 rgba(255,255,255,.9);
+}
+@media (min-width:1181px) {
+  .fa-locked-needs .fa-locked-need strong::after {
+    margin-top:5px;
+    color:#496b9f;
+    font-size:9.7px;
+    letter-spacing:.11em;
+    font-weight:760;
+  }
+}
+.fa-locked-needs .fa-locked-need .fa-need-chevron {
+  background:radial-gradient(circle at 28% 20%,#abffd4 0%,#37df88 24%,#05b865 55%,#008748 100%);
+  border:1px solid rgba(211,255,229,.98);
+  box-shadow:
+    0 2px 0 #04743f,
+    0 5px 9px rgba(0,111,60,.22),
+    inset 0 2px 1px rgba(255,255,255,.7),
+    inset 0 -2px 3px rgba(0,83,38,.14);
+}
+.fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon {
+  stroke-width:1.85;
+  filter:drop-shadow(0 1px 0 rgba(0,95,54,.16));
+}
+@media(hover:hover) and (pointer:fine) {
+  .fa-locked-needs .fa-locked-need:hover {
+    transform:translateY(-2px);
+    box-shadow:
+      0 4px 0 rgba(77,99,187,.15),
+      0 16px 26px rgba(23,44,111,.20),
+      0 23px 34px -18px rgba(35,61,149,.24),
+      inset 0 1.5px 0 #fff;
+  }
+  .fa-locked-needs .fa-locked-need:hover .fa-need-chevron {
+    background:radial-gradient(circle at 28% 18%,#c4ffe2 0%,#39ed94 24%,#04c56c 60%,#00894d 100%);
+  }
+}
+.fa-locked-needs .fa-locked-need:active {
+  transform:translateY(1px);
+  box-shadow:0 1px 0 rgba(77,99,187,.12),0 4px 9px rgba(23,44,111,.14),inset 0 2px 5px rgba(51,75,148,.11);
+}
+@media (max-width:600px) {
+  .fa-locked-needs .fa-locked-need {
+    background:
+      linear-gradient(150deg,#fff 0%,#f8fdff 50%,#edf4ff 100%) padding-box,
+      linear-gradient(145deg,#fff 5%,var(--facet-a) 48%,var(--facet-b) 100%) border-box;
+    box-shadow:0 2px 0 rgba(72,96,181,.17),0 5px 10px rgba(23,55,131,.11),inset 0 2px 0 #fff,inset 0 -2px 5px rgba(83,122,210,.06);
+  }
+  .fa-locked-needs .fa-locked-need::before {opacity:.54}
+  .fa-locked-needs .fa-locked-need::after {opacity:.82;background:linear-gradient(90deg,var(--facet-a),var(--facet-b))}
+  .fa-locked-needs .fa-locked-need strong {letter-spacing:-.047em}
+}
+/* Final desktop detailing inside the existing fixed-size cards. */
+@media (min-width:1371px) {
+  .fa-locked-needs .fa-locked-need strong {letter-spacing:-.032em;}
+  .fa-locked-needs .fa-locked-need .fa-need-chevron {
+    width:36px;height:36px;
+  }
+  .fa-locked-needs .fa-need-chevron .fa-mobile-wa-icon {
+    width:23px;height:23px;
+  }
+}
+@media (min-width:601px) {
+  .fa-locked-needs .fa-locked-need .need-icon {overflow:hidden;}
+  .fa-locked-needs .fa-locked-need .need-icon::before {
+    content:"";
+    position:absolute;
+    z-index:0;
+    top:0;right:0;
+    width:14px;height:14px;
+    background:linear-gradient(130deg,#e8ffff,var(--facet-a));
+    clip-path:polygon(0 0,100% 0,100% 100%);
+    opacity:.55;
+    pointer-events:none;
+  }
+  .fa-locked-needs .fa-locked-need .need-icon svg {position:relative;z-index:1;}
+}
+
+/* Glyph-only replacement: preserve all original icon and badge dimensions. */
+.fa-locked-needs .fa-need-chevron svg.fa-mobile-wa-icon {fill:#fff;stroke:none;stroke-width:0;}
