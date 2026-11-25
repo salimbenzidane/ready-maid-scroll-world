@@ -9,6 +9,7 @@
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
   window.gtag('js', new Date());
   window.gtag('config', measurementId);
+  window.gtag('config', 'AW-18587211891');
 
   if (!document.querySelector('[data-readymaid-ga4]')) {
     const tag = document.createElement('script');
@@ -43,6 +44,7 @@
       link_text: linkText,
       link_location: linkLocation
     });
+    window.gtag('event', 'conversion', { send_to: 'AW-18587211891/f5meCMmSpb0dEPOwiZ9F' });
   }, true);
 })();
 
