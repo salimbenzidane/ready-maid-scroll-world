@@ -87,10 +87,12 @@
     const previous = byId.get(activeGroup.clips[wrap(index - 1)]);
     const next = byId.get(activeGroup.clips[wrap(index + 1)]);
     video.pause();
-    source.src = clip.src;
+    const sourceChanged = source.getAttribute('src') !== clip.src;
+    if (sourceChanged) source.src = clip.src;
     video.poster = clip.poster;
     video.setAttribute('aria-label', ui().selectedVideo + translatedClip(clip).title);
-    video.load();
+    // The initial selection already has the correct source; preserve preload=none.
+    if (sourceChanged || autoplay) video.load();
     title.textContent = translatedClip(clip).title;
     benefit.textContent = translatedClip(clip).benefit;
     duration.textContent = clip.duration;

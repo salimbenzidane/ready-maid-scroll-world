@@ -22,6 +22,7 @@
   const useIcon = (name) => `<svg aria-hidden="true"><use href="#${name}"></use></svg>`;
   let attemptedAudibleAutoplay = false;
   let autoplaySoundBlocked = false;
+  let initialPlaybackRequested = false;
 
   function updateVideoUI() {
     const isPaused = video.paused;
@@ -42,6 +43,7 @@
   // On first load request audible autoplay. Chrome may deny this without a gesture.
   // When denied, show the original poster at 0:00 instead of playing silently.
   async function startVideo() {
+    initialPlaybackRequested = true;
     if (autoplaySoundBlocked) return startWithSoundFromBeginning();
     if (!attemptedAudibleAutoplay) {
       attemptedAudibleAutoplay = true;
@@ -71,6 +73,7 @@
   }
 
   async function startWithSoundFromBeginning() {
+    initialPlaybackRequested = true;
     // Directly inside a click event; no timer, prompt or automatic redirect.
     video.pause();
     try { video.currentTime = 0; } catch (err) { /* metadata not yet ready */ }
@@ -121,7 +124,25 @@
   video.addEventListener('pause', updateVideoUI);
   video.addEventListener('volumechange', updateVideoUI);
   video.addEventListener('error', () => { videoBox.classList.add('is-paused'); if (status) status.textContent = tr('Video unavailable. Please try again later.'); });
-  window.addEventListener('DOMContentLoaded', () => { startVideo(); });
+  window.addEventListener('DOMContentLoaded', () => {
+    const begin = () => {
+      if (!initialPlaybackRequested) startVideo();
+    };
+    // On mobile, do not fetch the interview video while it is offscreen.
+    // Preserve the existing audible autoplay attempt when the interview is viewed.
+    if (window.matchMedia('(max-width: 600px)').matches && 'IntersectionObserver' in window) {
+      videoBox.classList.add('is-paused');
+      const observer = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          observer.disconnect();
+          begin();
+        }
+      });
+      observer.observe(videoBox);
+    } else {
+      begin();
+    }
+  });
   const menu = $('#menu-toggle');
   const quick = $('#quick-menu');
   menu.addEventListener('click', () => {
