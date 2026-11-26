@@ -936,3 +936,19 @@ section[id],div[id]{scroll-margin-top:88px}
 .header-social.rednote>span{display:block;white-space:nowrap;font-size:8px;font-weight:900;line-height:1;letter-spacing:-.06em;transform:translateY(.2px)}
 .footer-social-icon.rednote{background:#e72f3f;overflow:hidden;white-space:nowrap;font-size:0;line-height:1}
 .footer-social-icon.rednote>span{display:block;white-space:nowrap;font-size:9px;font-weight:900;line-height:1;letter-spacing:-.08em;transform:translateY(.2px)}
+
+/* Content-page navigation and tap targets; leave the approved V2 homepage untouched. */
+.content-page .site-header { height: auto; min-height: 68px; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding-block: 4px; }
+.content-page .site-header > a:first-child { min-width: 0; }
+.content-page .site-header > a:first-child img { display: block; width: 245px; max-width: 100%; height: auto; }
+.content-page .header-wa { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding-inline: 8px; }
+.content-page .content-global-nav { display: flex; flex-wrap: wrap; gap: 4px 8px; padding-inline: 10px; }
+.content-page .content-global-nav a,
+.content-page .breadcrumb a,
+.content-page .content-site-footer a { display: inline-flex; align-items: center; min-height: 32px; padding-inline: 4px; }
+.content-page .breadcrumb { padding-inline: 10px; }
+.content-page .related-grid a,
+.content-page .conversion-card .primary-cta { display: block; min-height: 44px; padding: 8px; }
+@media (max-width: 767px) {
+  .content-page .site-header > a:first-child img { width: 200px; }
+}
