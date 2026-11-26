@@ -231,6 +231,7 @@ ${faq}
 ${claims}
 ${related}
 </main>
+<script defer src="/site-v2/google-ads-attribution.js"></script>
 </body>
 </html>
 `;

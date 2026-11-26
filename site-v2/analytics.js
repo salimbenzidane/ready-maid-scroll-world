@@ -1,2 +1,11 @@
-/* Uses the existing Readymaid GA4 property. Tracks link selections, not delivered messages. */
-(()=>{'use strict';const id='G-80EJ9M4TG3';window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};window.gtag('js',new Date());window.gtag('config',id);window.gtag('config','AW-18587211891');if(!document.querySelector('[data-readymaid-ga4]')){const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+id;s.dataset.readymaidGa4='true';document.head.appendChild(s)}document.addEventListener('click',function(ev){const a=ev.target instanceof Element?ev.target.closest('a[href]'):null;if(!a)return;let u;try{u=new URL(a.href,location.href)}catch{return}const number='601115556666';if(!(u.hostname==='wa.me'&&u.pathname.replace(/^\/+/, '').split('/')[0]===number)&&!(u.hostname==='api.whatsapp.com'&&u.searchParams.get('phone')===number))return;const area=a.closest('.mobile-bottom')?'mobile_sticky':a.closest('.wa-float')?'floating':a.closest('header,nav')?'header':a.closest('footer')?'footer':'content';const label=(a.getAttribute('aria-label')||a.textContent||'WhatsApp').replace(/\s+/g,' ').trim().slice(0,80);window.gtag('event','whatsapp_click',{link_url:u.origin+u.pathname,link_text:label,link_location:area});window.gtag('event','conversion',{send_to:'AW-18587211891/f5meCMmSpb0dEPOwiZ9F'})},true)})();
+/* The shared attribution module owns GA4, Ads and WhatsApp tracking. */
+(() => {
+  'use strict';
+  window.__readymaidPrimaryWhatsAppNumber = '601115556666';
+  if (window.__readymaidAttributionBootstrap) return;
+  window.__readymaidAttributionBootstrap = true;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = '/site-v2/google-ads-attribution.js';
+  document.head.appendChild(s);
+})();
