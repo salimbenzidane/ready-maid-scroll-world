@@ -154,7 +154,10 @@ function verifyRenderedOutput(html, c, canonical) {
   for (const f of c.faq) assert(html.includes(esc(f.question)) && html.includes(esc(f.answer_brief)), "Rendered FAQ mismatch");
   for (const l of c.internal_links) assert(html.includes(`href="${esc(l.url)}"`) && html.includes(esc(l.anchor)), "Rendered internal link mismatch");
   for (const cl of c.claims) assert(html.includes(esc(cl.claim)), "Rendered claim mismatch");
-  assert(!/<script(?! type="application\/ld\+json")/i.test(html), "Unexpected executable script in CREATE output");
+  const approvedTrackingTag = '<script defer src="/site-v2/google-ads-attribution.js"></script>';
+  assert(html.split(approvedTrackingTag).length === 2, "Approved attribution tag missing or duplicated");
+  assert(!/<script(?! type="application\/ld\+json")/i.test(html.replace(approvedTrackingTag, '')),
+    "Unexpected executable script in CREATE output");
   const schemaMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/i);
   assert(schemaMatch, "Rendered JSON-LD missing");
   const graph = JSON.parse(schemaMatch[1]);
