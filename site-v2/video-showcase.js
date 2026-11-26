@@ -203,5 +203,6 @@
     }
   });
   chooseTopic(groups[0].id);
-  applyLanguage('en');
+  const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+  applyLanguage(['en', 'zh', 'ms'].includes(requestedLanguage) ? requestedLanguage : 'en');
 })();
