@@ -165,7 +165,7 @@
   const galleryClose = $('#gallery-close');
   const galleryItems = {
     arrival: {title: 'Ready Team Arrive — edited orientation photo', type: 'image', src: 'site-v2/assets/ready-team-arrive-20261127.webp', alt: 'Readymaid team during office orientation, edited photograph'},
-    training: {title: 'Readymaid Orientation & Training', type: 'video', src: 'site-v2/assets/real-training-clip.mp4'},
+    training: {title: 'Readymaid Orientation & Training — edited photo', type: 'image', src: 'site-v2/assets/readymaid-training-orientation-20261127.webp', alt: 'Readymaid team learning together at a laptop, edited photograph'},
     practice: {title: 'Readymaid Practical Training', type: 'image', src: 'site-v2/assets/proof-practice.webp', alt: 'Real practical training activity by Readymaid helpers'},
     team: {title: 'Readymaid Helpers at the Airport', type: 'image', src: 'site-v2/assets/proof-team.webp', alt: 'Real Readymaid helpers arriving with luggage'}
   };
