@@ -388,3 +388,15 @@ html[lang="zh-CN"] .fa-customer-video-shell .interview-audio-gate-hint {
 @media(prefers-reduced-motion:reduce) {
   .fa-customer-video-shell .interview-audio-gate-button { transition:none; }
 }
+
+/* Keep translated service labels readable inside the existing mobile cards. */
+@media (max-width:600px) {
+  html[lang="ms-MY"] .fa-locked-needs .fa-locked-need {grid-template-columns:20px minmax(0,1fr) 17px;column-gap:2px;padding-left:4px;padding-right:4px}
+  html[lang="ms-MY"] .fa-locked-needs .fa-locked-need .need-icon {width:20px;height:26px}
+  html[lang="ms-MY"] .fa-locked-needs .fa-locked-need .fa-need-chevron {width:17px;height:17px}
+  html[lang="ms-MY"] .fa-locked-needs .fa-locked-need strong {font-size:10px;line-height:1.12}
+  html[lang="ms-MY"] .fa-locked-needs .fa-locked-need strong::after {content:none}
+}
+@media (max-width:355px) {
+  html[lang="ms-MY"] .fa-locked-needs .fa-locked-need strong {font-size:9px}
+}
