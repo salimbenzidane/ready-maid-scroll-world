@@ -47,10 +47,12 @@
   // Corporate operator identity is shown beneath footer contact actions, with registered legal name unchanged.
   Object.assign(translations.zh, {"Operated by":"营运公司："});
   Object.assign(translations.ms, {"Operated by":"Dikendalikan oleh"});
+  Object.assign(translations.zh, {"Professional Home Support":"专业居家支持","for the People You Love":"为您所爱的家人","Ready Team Arrive":"Ready 团队抵达","Our Ready Team":"我们的 Ready 团队","Carefully Matching":"用心配对"});
+  Object.assign(translations.ms, {"Professional Home Support":"Sokongan Rumah Profesional","for the People You Love":"untuk Insan Tersayang","Ready Team Arrive":"Ketibaan Pasukan Ready","Our Ready Team":"Pasukan Ready Kami","Carefully Matching":"Padanan Teliti"});
   const metadata = {
-    en: { title: 'Readymaid Agency | Find the Right Helper for the People You Love', description: 'Readymaid Agency. Find the right domestic helper for elderly care, housework or child care. View our real customer experience and contact us directly.' },
-    zh: { title: 'Readymaid 家政中介 | 为您所爱的家人寻找合适帮手', description: 'Readymaid 持牌家政中介，为家庭提供长者照护、家务及儿童照顾的帮手配对。了解真实客户体验并联系我们。' },
-    ms: { title: 'Agensi Readymaid | Cari Pembantu Sesuai untuk Keluarga Anda', description: 'Agensi Readymaid membantu keluarga mencari pembantu yang sesuai untuk penjagaan warga emas, kerja rumah dan penjagaan anak. Ketahui pengalaman pelanggan sebenar.' }
+    en: { title: 'Readymaid Agency | Professional Home Support for the People You Love', description: 'Readymaid Agency. Find the right domestic helper for elderly care, housework or child care. View our real customer experience and contact us directly.' },
+    zh: { title: 'Readymaid 家政中介 | 为您所爱的家人提供专业居家支持', description: 'Readymaid 持牌家政中介，为家庭提供长者照护、家务及儿童照顾的帮手配对。了解真实客户体验并联系我们。' },
+    ms: { title: 'Agensi Readymaid | Sokongan Rumah Profesional untuk Insan Tersayang', description: 'Agensi Readymaid membantu keluarga mencari pembantu yang sesuai untuk penjagaan warga emas, kerja rumah dan penjagaan anak. Ketahui pengalaman pelanggan sebenar.' }
   };
   let language = 'en';
   const translate = (text, lang = language) => (translations[lang] || {})[text] || text;
