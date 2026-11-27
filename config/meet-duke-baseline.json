@@ -5,13 +5,13 @@
   "source": "Owner-confirmed approved three-section Readymaid homepage",
   "hashAlgorithm": "sha256",
   "hashes": {
-    "index.html": "532f77689e611956ac9ddf10e675acb8aff2d81809918630820f5d0071b189a2",
+    "index.html": "8698c88b20e03b4b8b93bc94893f3567c1274c3088b998c2e77a345fd9961b3c",
     "script.js": "705af0186db258795e4582fc8c656ef88ad576251e1cd6cffee24ac0cc27a385",
     "site-v2/styles.css": "75c370cc694ae08d912809f11868feab646a4cc6807bea8fa73b1e90aa3c1413",
     "site-v2/footer-precision.css": "64ebfe4ab9b6154f3dcf8025a1a5edbbe8ccc289da2ddbe21a0a83e7ddaf45f6",
     "site-v2/video-showcase.css": "6f64e442480c229276569a554e6ba58298def3cef2bb3da115c8f85445097e91",
     "site-v2/video-showcase.js": "980131bb064e84be5b537c0c19830a57fef84b23c32372b0b81c4a956ab72ebe",
-    "site-v2/site-language.js": "e6619e0e7c9edffcd59fd4b8bdea1765346a82585e85fbce5d5254069d70bfd9",
+    "site-v2/site-language.js": "7eb514dfe355da1e73a6b94206b6a4722b95a98ea406c8c5e17e5ad507ba41a7",
     "site-v2/assets/readymaid-logo.png": "0d28aec608b73e4980502b4687562037598fea3bee2333beb3667b894bec9e31",
     "site-v2/seo-integration.css": "906f0957cba75bd975eee38bce69a9df548b70a062f60b577c9e16f8daa6ebf6",
     "site-v2/analytics.js": "ab952ad6f60ddb24410eef76edc80c12c52e1bd33974d1a2941ad89d13caae10"
