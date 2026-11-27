@@ -949,6 +949,44 @@ section[id],div[id]{scroll-margin-top:88px}
 .content-page .breadcrumb { padding-inline: 10px; }
 .content-page .related-grid a,
 .content-page .conversion-card .primary-cta { display: block; min-height: 44px; padding: 8px; }
+.content-page main { max-width: 1120px; margin-inline: auto; padding: 8px 18px 56px; }
+.content-page .content-shell { max-width: 920px; margin-inline: auto; color: #f7f9ff; line-height: 1.65; }
+.content-page .content-shell h1 { margin: 14px 0 8px; font-size: clamp(30px, 5vw, 46px); line-height: 1.08; letter-spacing: -.035em; }
+.content-page .content-shell h2 { margin: 30px 0 10px; font-size: clamp(21px, 3vw, 28px); line-height: 1.2; }
+.content-page .content-shell h3 { margin: 20px 0 6px; font-size: 18px; }
+.content-page .content-shell p,
+.content-page .content-shell li { color: #d7e1f1; line-height: 1.68; }
+.content-page .content-shell .legal-intro { margin: 0; color: #a9eaff; font-size: 13px; font-weight: 750; }
+.content-page .content-shell .evidence-media { margin: 24px 0 32px; overflow: hidden; border: 1px solid rgba(97,169,233,.28); border-radius: 18px; background: #061630; }
+.content-page .content-shell .evidence-media img { width: 100%; height: auto; }
+.content-page .content-shell .evidence-media figcaption { padding: 9px 13px; color: #aabbd3; font-size: 12px; }
+.content-page .service-offer { margin: 16px 0 22px; padding: 18px; border: 1px solid rgba(65,173,234,.4); border-radius: 18px; background: radial-gradient(ellipse at 90% 0%,rgba(105,42,220,.22),transparent 45%), linear-gradient(145deg,#0b2344,#07152d 70%); box-shadow: 0 16px 42px rgba(0,0,0,.24); }
+.content-page .service-offer-kicker { margin: 0 0 3px; color: #63e7ff; font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.content-page .service-offer h2 { margin: 0; color: #fff; font-size: clamp(21px,4vw,28px); }
+.content-page .service-offer-benefits { margin: 7px 0 12px; color: #d4e4f8; font-size: 13px; }
+.content-page .service-price-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 1px solid rgba(255,218,126,.35); border-radius: 12px; background: rgba(1,9,24,.55); }
+.content-page .service-price-row span { color: #e8edf8; font-size: 13px; font-weight: 750; }
+.content-page .service-price-row strong { color: #ffe092; font-size: clamp(24px,6vw,32px); letter-spacing: -.035em; white-space: nowrap; }
+.content-page .service-payment-stages { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin: 9px 0 0; padding: 0; list-style: none; }
+.content-page .service-payment-stages li { display: grid; align-content: start; gap: 2px; min-width: 0; padding: 9px; border: 1px solid rgba(110,148,201,.23); border-radius: 11px; background: rgba(255,255,255,.035); }
+.content-page .service-payment-stages span { color: #b8c9e2; font-size: 11px; line-height: 1.35; }
+.content-page .service-payment-stages strong { color: #fff; font-size: 16px; }
+.content-page .service-offer-terms { margin: 8px 0 0; color: #aebdd2; font-size: 10px; line-height: 1.45; }
+.content-page .service-offer-terms a { color: #8feaff; text-decoration: underline; text-underline-offset: 2px; }
+.content-page .service-offer-cta { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; margin-top: 12px; padding: 10px 14px; border-radius: 12px; background: linear-gradient(100deg,#08c678,#0b9a69); color: #fff; font-size: 15px; font-weight: 850; text-align: center; box-shadow: 0 8px 20px rgba(0,180,118,.2); }
+.content-page .service-offer-cta:hover { filter: brightness(1.08); }
+@media (max-width: 430px) {
+  .content-page main { padding-inline: 12px; }
+  .content-page .service-offer { padding: 12px; }
+  .content-page .service-offer-benefits { margin: 5px 0 8px; }
+  .content-page .service-price-row { padding: 8px 10px; }
+  .content-page .service-payment-stages { gap: 6px; }
+  .content-page .service-payment-stages li { padding: 7px 6px; }
+  .content-page .service-payment-stages span { font-size: 10px; }
+  .content-page .service-payment-stages { margin-top: 7px; }
+  .content-page .service-offer-terms { margin-top: 6px; }
+  .content-page .service-offer-cta { min-height: 46px; margin-top: 8px; padding-block: 8px; }
+}
 @media (max-width: 767px) {
   .content-page .site-header > a:first-child img { width: 200px; }
 }
