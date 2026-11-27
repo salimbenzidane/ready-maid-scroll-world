@@ -48,6 +48,8 @@ jobs:
         run: node scripts/seo-redirect-worker.mjs --self-test
       - name: Prove V2 Homepage guard rejects injected regressions
         run: node scripts/vercel-seo-guard.mjs --self-test
+      - name: Verify Google Ads paid WhatsApp attribution (synthetic, no live events)
+        run: node scripts/test-google-ads-attribution.mjs
       - name: Verify cryptographic V2 Homepage baseline
         run: node scripts/vercel-seo-guard.mjs --ci
       - name: Audit sitemap pages, metadata, assets and links

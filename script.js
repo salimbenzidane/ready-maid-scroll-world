@@ -1,51 +1,16 @@
 // READY MAID RESPONSIVE HOMEPAGE — Meet DUKE locked production baseline
 'use strict';
 
-// Measure a Ready Maid WhatsApp link selection. This records a click only;
-// it cannot confirm that WhatsApp opened or that a message was sent/received.
+/* The shared attribution module owns GA4, Ads and WhatsApp tracking. */
 (() => {
-  const measurementId = 'G-80EJ9M4TG3';
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-  window.gtag('js', new Date());
-  window.gtag('config', measurementId);
-  window.gtag('config', 'AW-18587211891');
-
-  if (!document.querySelector('[data-readymaid-ga4]')) {
-    const tag = document.createElement('script');
-    tag.async = true;
-    tag.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-    tag.dataset.readymaidGa4 = 'true';
-    document.head.appendChild(tag);
-  }
-
-  document.addEventListener('click', (event) => {
-    const target = event.target;
-    const link = target instanceof Element ? target.closest('a[href]') : null;
-    if (!link) return;
-
-    const destination = new URL(link.href, window.location.href);
-    const isReadymaidWaMe = destination.hostname === 'wa.me'
-      && destination.pathname.replace(/^\/+/, '').split('/')[0] === '601115556666';
-    const isReadymaidApi = destination.hostname === 'api.whatsapp.com'
-      && destination.searchParams.get('phone') === '601115556666';
-    if (!isReadymaidWaMe && !isReadymaidApi) return;
-
-    const linkLocation = link.matches('.floating-whatsapp') ? 'floating'
-      : link.closest('.mobile-sticky-cta') ? 'mobile_sticky'
-        : link.closest('header, nav') ? 'header'
-          : link.closest('footer') ? 'footer'
-            : 'content';
-    const linkText = (link.getAttribute('aria-label') || link.textContent || 'WhatsApp')
-      .replace(/\s+/g, ' ').trim().slice(0, 80);
-
-    window.gtag('event', 'whatsapp_click', {
-      link_url: `${destination.origin}${destination.pathname}`,
-      link_text: linkText,
-      link_location: linkLocation
-    });
-    window.gtag('event', 'conversion', { send_to: 'AW-18587211891/f5meCMmSpb0dEPOwiZ9F' });
-  }, true);
+  'use strict';
+  window.__readymaidPrimaryWhatsAppNumber = '601115556666';
+  if (window.__readymaidAttributionBootstrap) return;
+  window.__readymaidAttributionBootstrap = true;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = '/site-v2/google-ads-attribution.js';
+  document.head.appendChild(s);
 })();
 
 // P0 COMPLIANCE LINKS — execute first, before any optional homepage behavior.
