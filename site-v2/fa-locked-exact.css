@@ -285,3 +285,6 @@
   .fa-customer-panel {height:650px}
   .fa-locked-proof {margin-top:28px}
 }
+
+/* Make payment timing readable without changing the package artwork. */
+.fa-locked-offer .fa-payment-stages{font-size:13px;line-height:1.45;margin:8px auto 0;max-width:50rem;padding:0 12px}.fa-locked-offer .fa-payment-stages a{color:inherit;text-decoration:underline}
