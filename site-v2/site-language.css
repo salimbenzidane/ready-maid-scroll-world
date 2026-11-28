@@ -400,3 +400,42 @@ html[lang="zh-CN"] .fa-customer-video-shell .interview-audio-gate-hint {
 @media (max-width:355px) {
   html[lang="ms-MY"] .fa-locked-needs .fa-locked-need strong {font-size:9px}
 }
+
+/* Homepage-only responsive corrections for the approved language layouts. */
+@media (min-width:1371px) {
+  html:has(#home-hero) .fa-locked-crane {
+    left:calc(100vw - 205px);
+    right:auto;
+    top:650px;
+    width:100px;
+    opacity:.9;
+  }
+}
+@media (max-width:600px) {
+  html[lang="zh-CN"]:has(#home-hero) .masthead-row.wrap,
+  html[lang="ms-MY"]:has(#home-hero) .masthead-row.wrap {
+    margin-left:12px;
+    margin-right:12px;
+    gap:8px;
+  }
+  html[lang="zh-CN"]:has(#home-hero) .brand-lockup,
+  html[lang="ms-MY"]:has(#home-hero) .brand-lockup {
+    width:clamp(112px,37vw,145px);
+    flex:0 1 auto;
+    min-width:0;
+  }
+  html[lang="zh-CN"]:has(#home-hero) .header-actions,
+  html[lang="ms-MY"]:has(#home-hero) .header-actions {flex:none;gap:6px;}
+  html[lang="ms-MY"]:has(#home-hero) .wa-header {
+    padding:6px 7px;
+    gap:4px;
+    font-size:9.5px;
+    white-space:nowrap;
+  }
+  html[lang="ms-MY"]:has(#home-hero) .wa-header svg {width:16px;height:16px;}
+}
+@media (max-width:355px) {
+  html[lang="ms-MY"]:has(#home-hero) .masthead-row.wrap {margin-left:10px;margin-right:10px;}
+  html[lang="ms-MY"]:has(#home-hero) .brand-lockup {width:clamp(108px,36vw,120px);}
+  html[lang="ms-MY"]:has(#home-hero) .wa-header {padding:5px 6px;font-size:9px;}
+}
