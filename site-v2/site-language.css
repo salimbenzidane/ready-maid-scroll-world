@@ -416,6 +416,10 @@ html[lang="zh-CN"] .fa-customer-video-shell .interview-audio-gate-hint {
     font-size:clamp(48px,3.75vw,56px);
   }
 }
+html[lang="ms-MY"]:has(#home-hero) .fa-locked-intro {
+  white-space:normal;
+  max-width:100%;
+}
 @media (max-width:600px) {
   html[lang="zh-CN"]:has(#home-hero) .masthead-row.wrap,
   html[lang="ms-MY"]:has(#home-hero) .masthead-row.wrap {
