@@ -411,6 +411,11 @@ html[lang="zh-CN"] .fa-customer-video-shell .interview-audio-gate-hint {
     opacity:.9;
   }
 }
+@media (min-width:1181px) {
+  html[lang="ms-MY"]:has(#home-hero) .fa-locked-copy h1 {
+    font-size:clamp(48px,3.75vw,56px);
+  }
+}
 @media (max-width:600px) {
   html[lang="zh-CN"]:has(#home-hero) .masthead-row.wrap,
   html[lang="ms-MY"]:has(#home-hero) .masthead-row.wrap {
@@ -435,6 +440,8 @@ html[lang="zh-CN"] .fa-customer-video-shell .interview-audio-gate-hint {
   html[lang="ms-MY"]:has(#home-hero) .wa-header svg {width:16px;height:16px;}
 }
 @media (max-width:355px) {
+  html[lang="en-MY"]:has(#home-hero) .masthead-row.wrap {margin-left:10px;margin-right:10px;}
+  html[lang="en-MY"]:has(#home-hero) .brand-lockup {width:clamp(108px,36vw,120px);}
   html[lang="ms-MY"]:has(#home-hero) .masthead-row.wrap {margin-left:10px;margin-right:10px;}
   html[lang="ms-MY"]:has(#home-hero) .brand-lockup {width:clamp(108px,36vw,120px);}
   html[lang="ms-MY"]:has(#home-hero) .wa-header {padding:5px 6px;font-size:9px;}
