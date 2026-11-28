@@ -400,3 +400,84 @@ html[lang="zh-CN"] .fa-customer-video-shell .interview-audio-gate-hint {
 @media (max-width:355px) {
   html[lang="ms-MY"] .fa-locked-needs .fa-locked-need strong {font-size:9px}
 }
+
+/* Homepage-only responsive corrections for the approved language layouts. */
+@media (min-width:1371px) {
+  html:has(#home-hero) .fa-locked-crane {
+    left:calc(100vw - 205px);
+    right:auto;
+    top:650px;
+    width:100px;
+    opacity:.9;
+  }
+}
+@media (min-width:1181px) {
+  html[lang="ms-MY"]:has(#home-hero) .fa-locked-copy h1 {
+    font-size:clamp(48px,3.75vw,56px);
+  }
+}
+html[lang="ms-MY"]:has(#home-hero) .fa-locked-intro {
+  white-space:normal;
+  max-width:100%;
+}
+@media (max-width:600px) {
+  html[lang="zh-CN"]:has(#home-hero) .masthead-row.wrap,
+  html[lang="ms-MY"]:has(#home-hero) .masthead-row.wrap {
+    margin-left:12px;
+    margin-right:12px;
+    gap:8px;
+  }
+  html[lang="zh-CN"]:has(#home-hero) .brand-lockup,
+  html[lang="ms-MY"]:has(#home-hero) .brand-lockup {
+    width:clamp(112px,37vw,145px);
+    flex:0 1 auto;
+    min-width:0;
+  }
+  html[lang="zh-CN"]:has(#home-hero) .header-actions,
+  html[lang="ms-MY"]:has(#home-hero) .header-actions {flex:none;gap:6px;}
+  html[lang="ms-MY"]:has(#home-hero) .wa-header {
+    padding:6px 7px;
+    gap:4px;
+    font-size:9.5px;
+    white-space:nowrap;
+  }
+  html[lang="ms-MY"]:has(#home-hero) .wa-header svg {width:16px;height:16px;}
+}
+@media (max-width:355px) {
+  html[lang="en-MY"]:has(#home-hero) .masthead-row.wrap {margin-left:10px;margin-right:10px;}
+  html[lang="en-MY"]:has(#home-hero) .brand-lockup {width:clamp(108px,36vw,120px);}
+  html[lang="ms-MY"]:has(#home-hero) .masthead-row.wrap {margin-left:10px;margin-right:10px;}
+  html[lang="ms-MY"]:has(#home-hero) .brand-lockup {width:clamp(108px,36vw,120px);}
+  html[lang="ms-MY"]:has(#home-hero) .wa-header {padding:5px 6px;font-size:9px;}
+}
+
+/* Reserve independent text and WhatsApp icon columns on narrow service cards. */
+@media (max-width:600px) {
+  html:is([lang="en-MY"],[lang="zh-CN"]):has(#home-hero) .fa-locked-needs .fa-locked-need {
+    grid-template-columns:22px minmax(0,1fr) 18px;
+    column-gap:2px;
+    padding-inline:4px;
+  }
+  html:is([lang="en-MY"],[lang="zh-CN"]):has(#home-hero) .fa-locked-needs .need-icon {width:22px;}
+  html:is([lang="en-MY"],[lang="zh-CN"]):has(#home-hero) .fa-locked-needs .fa-need-chevron {width:18px;height:18px;}
+  html[lang="en-MY"]:has(#home-hero) .fa-locked-needs .fa-locked-need:nth-child(2) strong {white-space:nowrap;}
+  html[lang="zh-CN"]:has(#home-hero) .fa-locked-needs .fa-locked-need strong::after {
+    content:"WhatsApp\A 咨询";
+    display:block;
+    white-space:pre;
+    overflow-wrap:normal;
+    word-break:normal;
+    font-size:clamp(8px,2.3vw,10px);
+    line-height:1.15;
+    letter-spacing:0;
+  }
+}
+@media (max-width:355px) {
+  html:is([lang="en-MY"],[lang="zh-CN"]):has(#home-hero) .fa-locked-needs .fa-locked-need {
+    grid-template-columns:18px minmax(0,1fr) 17px;
+    column-gap:1px;
+    padding-inline:3px;
+  }
+  html:is([lang="en-MY"],[lang="zh-CN"]):has(#home-hero) .fa-locked-needs .need-icon {width:18px;}
+  html:is([lang="en-MY"],[lang="zh-CN"]):has(#home-hero) .fa-locked-needs .fa-need-chevron {width:17px;height:18px;}
+}
